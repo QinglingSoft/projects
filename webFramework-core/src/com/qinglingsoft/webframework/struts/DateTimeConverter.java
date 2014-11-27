@@ -5,13 +5,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.util.StrutsTypeConverter;
 
 public class DateTimeConverter extends StrutsTypeConverter {
-	private static final Log log = LogFactory.getLog(DateTimeConverter.class);
+	private static final Logger logger = Logger
+			.getLogger(DateTimeConverter.class.getName());
 	private final DateFormat dateFormat = new SimpleDateFormat(
 			"yyyy-MM-dd HH:mm:ss");
 
@@ -32,8 +33,8 @@ public class DateTimeConverter extends StrutsTypeConverter {
 			try {
 				return dateFormat.parse(value);
 			} catch (ParseException e) {
-				log.warn("value \"" + value
-						+ "\" convert to java.util.Date failed.");
+				logger.log(Level.WARNING,
+						"Value \"%s\" convert to java.util.Date failed.", value);
 			}
 		}
 		return null;
@@ -45,7 +46,8 @@ public class DateTimeConverter extends StrutsTypeConverter {
 		if (o instanceof Date) {
 			return dateFormat.format((Date) o);
 		}
-		log.warn("Object " + o + " is not a instance of java.util.Date.");
+		logger.log(Level.WARNING,
+				"Object %s is not a instance of java.util.Date.", o);
 		return null;
 	}
 
