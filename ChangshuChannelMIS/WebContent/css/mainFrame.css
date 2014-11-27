@@ -1,0 +1,169 @@
+@CHARSET "UTF-8";
+html {
+	height: 100%;
+	min-width: 790px;
+	min-height: 590px;
+}
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	height: 55px;
+	padding: 5px;
+}
+#header .title {
+	margin: 0 20px;
+	font-size: 24pt;
+	font-family: "华文彩云";
+	color: #4190cd;
+}
+#header .subtitle {
+	margin: 0 70px;
+	font-size: 12pt;
+	font-weight: bold;
+	font-family: "Arial";
+	color: #71bef2;
+}
+#header #topLevelFunctions {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+#header #topLevelFunctions ul {
+	float: right;
+	margin: 0;
+	margin-left: 1em;
+	list-style: none;
+}
+#header #topLevelFunctions ul li {
+	float: left;
+	white-space: nowrap;
+	margin: 0 3px;
+}
+#header #topLevelFunctions ul li:after {
+	content: " |"
+}
+
+#header #topLevelFunctions ul li a {
+	color: #71bef2;
+	text-decoration: none;
+}
+
+#header #topLevelFunctions ul li a:hover {
+	color: #00190b;
+	text-decoration: underline;
+}
+
+#header #topLevelFunctions #welcome {
+	position: absolute;
+	right: 0;
+	bottom: -1.5em;
+	white-space: nowrap;
+	color: #4190cd;
+	min-width: 2em;
+}
+
+#header #copyrightLink {
+	position: relative;
+	text-decoration: none;
+}
+
+#header #copyrightLink #copyright {
+	position: absolute;
+	display: none;
+	right: 0;
+	top: 1.2em;
+	width: 15em;
+	background-image: url('../images/about.png');
+	background-position: left top;
+	background-repeat: no-repeat;
+	min-height: 48px;
+	padding: .2em .5em .2em 50px;
+	background-color: #F2F5F7;
+	border: solid silver;
+	border-width: 1px 0 0 1px;
+	text-align: left;
+	text-decoration: none;
+	font-family: serif;
+	z-index: 4;
+}
+
+#header #copyrightLink:hover #copyright {
+	display: block;
+}
+
+#header #clock {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	color: #4190cd;
+}
+
+#menu {
+	font-size: 10pt;
+}
+#menu > div {
+	padding: 0;
+	padding-left: 8px;
+}
+#menu ul {
+	list-style: none;
+	list-style-position: outside;
+	padding-left: 8px;
+	margin-left: 8px;
+}
+#menu li {
+	vertical-align: baseline;
+	margin: .3em 0;
+}
+#menu li>.title {
+	padding-left: 18px;
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+#menu li.catalog {
+	list-style-image: url("../images/plusSign.png");
+}
+#menu li.catalog>.title {
+	background-image: url("../images/folder.png");
+	cursor: default;
+	white-space: nowrap;
+}
+#menu li.catalog.expanded {
+	list-style-image: url("../images/subtractionSign.png");
+}
+#menu li.catalog.empty {
+	list-style: none;
+}
+#menu li.catalog.expanded>.title {
+	background-image: url("../images/folder_open.png");
+}
+#menu li.catalog > .content {
+	display: none;
+}
+#menu li.catalog.expanded > .content {
+	display: block;
+}
+#menu li.catalog > ul {
+	display: none;
+}
+#menu li.catalog.expanded > ul {
+	display: block;
+}
+
+#menu li.link {
+	list-style: none;
+	padding-left: 18px;
+	background-image: url("../images/item.png");
+	background-position: left top;
+	background-repeat: no-repeat;
+	white-space: nowrap;
+}
+#menu li.link>a {
+	display: block;
+	text-decoration: none;
+}
+

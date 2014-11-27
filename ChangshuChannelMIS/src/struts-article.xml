@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="article" namespace="/article" extends="struts-default">
+		<action name="addNews" class="articleAction" method="add">
+			<result>newsList.jsp</result>
+			<result name="error">newNews.jsp</result>
+		</action>
+		<action name="deleteNews" class="articleAction" method="delete">
+			<result>newsList.jsp</result>
+			<result name="error">newsList.jsp</result>
+		</action>
+		<action name="updateNews" class="articleAction" method="update">
+			<result>newsList.jsp</result>
+			<result name="error">editNews.jsp</result>
+		</action>
+		<action name="publishNews" class="articleAction" method="publish">
+			<result>newsList.jsp</result>
+			<result name="error">newsList.jsp</result>
+		</action>
+		<action name="unpublishNews" class="articleAction" method="unpublish">
+			<result>newsList.jsp</result>
+			<result name="error">newsList.jsp</result>
+		</action>
+		<action name="addNotice" class="articleAction" method="add">
+			<result>noticeList.jsp</result>
+			<result name="error">newNotice.jsp</result>
+		</action>
+		<action name="deleteNotice" class="articleAction" method="delete">
+			<result>noticeList.jsp</result>
+			<result name="error">noticeList.jsp</result>
+		</action>
+		<action name="updateNotice" class="articleAction" method="update">
+			<result>noticeList.jsp</result>
+			<result name="error">editNotice.jsp</result>
+		</action>
+		<action name="publishNotice" class="articleAction" method="publish">
+			<result>noticeList.jsp</result>
+			<result name="error">noticeList.jsp</result>
+		</action>
+		<action name="unpublishNotice" class="articleAction" method="unpublish">
+			<result>noticeList.jsp</result>
+			<result name="error">noticeList.jsp</result>
+		</action>
+	</package>
+</struts>

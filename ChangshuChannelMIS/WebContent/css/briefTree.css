@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #fcfcfc;
+}
+ul.briefTree {
+	list-style: none;
+	margin-bottom: 150px;
+}
+ul.briefTree ul {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	margin-bottom: .5em;
+}
+ul.briefTree li {
+	position: relative;
+	white-space: nowrap;
+	margin-bottom: .3em;
+	padding-left: 20px;
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+ul.briefTree .expander {
+	position: absolute;
+	left: -16px;
+	top: 0;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url("../images/plusSign.png");
+}
+ul.briefTree li.expanded>.expander {
+	background-image: url("../images/subtractionSign.png");
+}
+ul.briefTree li>.brief {
+	//display: inline;
+	padding: 2px;
+	vertical-align: top;
+	cursor: pointer;
+	vertical-align: top;
+	border: solid 1px;
+	border-color: transparent;
+}
+ul.briefTree li>.brief:hover {
+	background-color: #e8f2fe;
+	border-color: #84acdd;	
+}
+ul.briefTree li.selected>.brief {
+	background-color: highlight;
+	color: highlighttext;
+}
+ul.briefTree li.rightClicked>.brief {
+	border-color: #84acdd;
+	background-color: #e8f2fe;
+	color: inherit;
+}
+
+ul.briefTree li>.brief>span {
+	margin-right: .5em;
+}
+ul.briefTree li>ul {
+	display: none;
+}
+ul.briefTree li.expanded>ul {
+	display: inherit;
+}
+#rightClickMenu {
+	display: none;
+	position: absolute;
+}

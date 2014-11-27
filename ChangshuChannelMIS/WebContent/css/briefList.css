@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+table.briefList {
+	min-width: 100%;
+	border-collapse: collapse;
+	border: solid black 1px;
+	margin-bottom: 4em;
+}
+table.briefList th,
+table.briefList td {
+	border: solid gray 1px;
+	white-space: nowrap;
+	padding: .3em 1em;
+}
+table.briefList > tbody > tr:hover {
+	background-color: #e8f2fe;
+	cursor: pointer;
+}
+table.briefList > tbody > tr.selected {
+	background-color: highlight;
+	color: highlighttext;
+}
+.pageTurner {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}

@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+html {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-size: 9pt;
+	height: 100%;
+}
+div.title {
+	padding: .2em 1em;
+}
+ul.loading {
+	min-height: 16px;
+	background-image: url("../images/loading_s.gif");
+	background-position: left center;
+	background-repeat: no-repeat;
+}

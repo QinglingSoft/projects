@@ -1,0 +1,86 @@
+@CHARSET "UTF-8";
+
+table, td, th {
+	padding: 0px;
+	border-spacing: 0px;
+}
+
+.listTable {
+	margin: 2em 0px;
+	width: 80%;
+}
+
+.listTable .total {
+	float: left;
+	vertical-align: bottom;
+	text-align: left;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+.listTable .function {
+	float: right;
+	vertical-align: bottom;
+	text-align: right;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+.listTable .function form {
+	margin: 0px;
+	padding: 0px;
+}
+table.list {
+	border-collapse: collapse;
+	border: solid #C2C2C2 1px;
+	empty-cells: show;
+	margin: 2em 0px;
+	clear: both;
+}
+
+.listTable table.list {
+	border-collapse: collapse;
+	border: solid black 1px;
+	width: 100%;
+}
+
+table.list caption {
+	text-align: left;
+}
+
+table.list tbody tr.odd {
+	background-color: #f8f8f8;
+}
+
+table.list tbody tr:hover {
+	background-color: #e8f2fe;
+}
+
+table.list thead tr th {
+	font-weight: normal;
+	text-align: center;
+	border: solid gray 1px;
+	padding: 0.4em 1em 0.4em 1em;
+	white-space: nowrap;
+}
+
+table.list tbody tr td {
+	border: solid gray 1px;
+	padding: 0.3em 1em 0.3em 1em;
+	white-space: nowrap;
+	text-align: left;
+}
+
+.turnPage {
+	width: 100%;
+	text-align: right;
+}
+.turnPage td {
+	vertical-align: middle;
+}
+.turnPage form {
+	padding: 0px;
+	margin: 0px;
+}
+
+.turnPage a {
+	color: black;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiResourceLocking="false">
+	<!-- 以下段配置session在tomcat重启时的持久化策略，saveOnRestart为false时不进行持久化，方便调试时使用 -->
+	<Manager className="org.apache.catalina.session.PersistentManager"
+		debug="0" saveOnRestart="true" maxActiveSessions="-1" minIdleSwap="-1"
+		maxIdleSwap="-1" maxIdleBackup="-1">
+		<Store className="org.apache.catalina.session.FileStore"
+			directory="roadBridgeSession" />
+	</Manager>
+	<Environment description="备份文件夹" name="backupFolder"
+		type="java.lang.String"
+		override="false"
+		value="/roadBridge/backup" />
+	<Environment description="桥梁媒体导入错误包文件夹" name="qlMediaImportErrorFolder"
+		type="java.lang.String"
+		override="false"
+		value="/roadBridge/qlMediaImportError" />
+	<Resource name="jdbc/RoadBridgeDB" type="javax.sql.DataSource"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver" url="jdbc:jtds:sqlserver://localhost:1433/roadBridge"
+		username="roadBridge" password="roadBridge" validationQuery="select 1"
+		maxIdle="4" maxWait="5000" maxActive="8" removeAbandoned="true"
+		removeAbandonedTimeout="8">
+	</Resource>
+</Context>

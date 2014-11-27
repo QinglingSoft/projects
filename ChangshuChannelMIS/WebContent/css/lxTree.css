@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+ul.lxTree > li.empty {
+	display: none;
+}
+ul.lxTree .title {
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+ul.lxTree ul.ql {
+	list-style: none;
+}
+ul.lxTree ul.ql > li {
+	white-space: nowrap;
+}
+ul.lxTree li.link {
+	cursor: pointer;
+}

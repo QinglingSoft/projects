@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+.parentBrief {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	line-height: 2em;
+	z-index: 4;
+	background-color: white;
+}
+.parentBrief span.entry {
+	white-space: nowrap;
+	margin: 0 .5em;
+}
+.parentBrief span.label,
+.parentBrief span.value {
+	padding: 0;
+	display: inline-table;
+}
+.parentBrief span.value {
+	font-weight: normal;
+}
+ul.childTableData {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+	margin-top: 5em;
+}
+ul.childTableData > li {
+	position: relative;
+}
+ul.childTableData > li > h1 {
+	font-size: small;
+	padding: .2em 2em;
+	margin: 0;
+}
+ul.childTableData > li > .statusIcon {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 16px;
+	height: 16px;
+	background-image: url("../images/collapsed.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+ul.childTableData > li.expanded > .statusIcon {
+	background-image: url("../images/expanded.png");
+}
+ul.childTableData > li > table.tableData {
+	display: none;
+}
+ul.childTableData > li.expanded > table.tableData {
+	display: block;
+}
+ul.childTableData > li > table.tableData {
+	display: none;
+}
+ul.childTableData > li > img.deleteButton {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	cursor: pointer;
+}
+#addDialog input,
+#addDialog textarea {
+	width: 280px;
+}
+#addDialog select {
+	width: 286px;
+}

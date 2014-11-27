@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+button {
+	font-size: 9pt;
+	color: #365646;
+	vertical-align: middle;
+	padding-top: 2px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+form {
+	margin: 2em 0px;
+}
+
+input[type="text"] {
+	width: 200px;
+}
+
+input:focus, textarea:focus {
+	background-color: #ffc;
+}
+
+table.form th {
+	text-indent: 2em;
+	text-align: right;
+	font-weight: normal;
+}
+
+table.form td {
+	text-align: left;
+}
+
+table.form input {
+	margin-right: .5em;
+}
+
+table.form button {
+	font-size: 9pt;
+	color: #365646;
+	vertical-align: middle;
+	padding-top: 2px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 2em;
+}
+
+form label.error {
+	color: red;
+}

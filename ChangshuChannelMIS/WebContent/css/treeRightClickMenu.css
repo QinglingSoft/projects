@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+#rightClickMenu {
+	position: absolute;
+	background-color: menu;
+	color: menutext;
+	border: solid #979797 1px;
+	padding: 1px;
+}
+#rightClickMenu > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#rightClickMenu > ul > li {
+	cursor: default;
+	padding: .3em 5em .3em 28px;
+	background-position: left center;
+	background-repeat: no-repeat;	
+	border: solid  1px;
+	border-color: transparent;
+	white-space: nowrap;
+}
+#rightClickMenu > ul > li:hover {
+	//background-color: #e8f2fe;
+	//border-color: #aecff7;
+	background-color: highlight;
+	border-color: highlight;
+	color: highlighttext;
+}
+#rightClickMenu li.adder {
+	background-image: url("../images/addIcon.png");
+}
+#rightClickMenu li.deleter {
+	background-image: url("../images/deleteIcon.png");
+}

@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+body {
+	margin: 0;
+}
+#workspace {
+	vertical-align: top;
+}
+.title {
+	background-color: #87cefa;
+	color: #00009e;
+	font-weight: bold;
+	padding: .3em 2em;
+	vertical-align: middle;
+}

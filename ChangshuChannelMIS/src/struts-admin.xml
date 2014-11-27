@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="admin" namespace="/admin" extends="struts-default">
+		<action name="addUser" class="userAction" method="add">
+			<result type="redirect">userList.jsp</result>
+			<result name="error" type="redirect">newUser.jsp</result>
+		</action>
+		<action name="updateUser" class="userAction" method="update">
+			<result type="redirect">userList.jsp</result>
+			<result name="error" type="redirect">editUser.jsp</result>
+		</action>
+		<action name="deleteUser" class="userAction" method="delete">
+			<result type="redirect">userList.jsp</result>
+			<result name="error" type="redirect">userList.jsp</result>
+		</action>
+		<action name="initUserPassword" class="userAction" method="initPassword">
+			<result type="redirect">userList.jsp</result>
+			<result name="error" type="redirect">userList.jsp</result>
+		</action>
+		<action name="backup" class="systemMaintainAction" method="backup">
+			<result>backupSuccess.jsp</result>
+		</action>
+		<action name="qlMediaImport" class="qlMediaImportAction" method="execute">
+			<result>qlMediaImportResult.jsp</result>
+			<result name="error">qlMediaImportResult.jsp</result>
+		</action>
+	</package>
+</struts>

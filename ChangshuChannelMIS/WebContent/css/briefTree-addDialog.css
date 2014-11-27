@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+#addDialog p {
+	margin: .2em 0;
+	padding: 0;
+}
+#addDialog ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#addDialog label {
+	font-weight: bold;
+	white-space: nowrap;
+}
+#addDialog input[type=text],
+#addDialog textarea {
+	width: 140px;
+}
+#addDialog select {
+	width: 146px;
+}

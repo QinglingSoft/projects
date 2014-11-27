@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd ">
+	<context:component-scan base-package="com.chaos.roadbridge" />
+	<jee:jndi-lookup id="backupFolder" jndi-name="backupFolder" />
+	<jee:jndi-lookup id="qlMediaImportErrorFolder" jndi-name="qlMediaImportErrorFolder" />
+	
+	<!-- 缓存设置 -->
+	<bean id="dataTableCache" class="java.lang.Boolean">
+		<constructor-arg value="true" />
+	</bean>
+	
+	<!-- 数据访问 -->
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/RoadBridgeDB" />
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/hibernate.cfg.xml" />
+		<property name="packagesToScan" value="com.chaos.roadbridge.model" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven />
+	
+	<!-- MIME映射 -->
+	<bean id="extMimeTypes"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="/WEB-INF/extMimeTypes.xml" />
+	</bean>
+</beans>

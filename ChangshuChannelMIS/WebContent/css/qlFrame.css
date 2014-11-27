@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #F2F5F7;
+}
+div.tab-label {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	text-align: left;
+	border-bottom: solid #75C3EB 1px;
+}
+div.tab-pane {
+	background-color: white;
+	position: fixed;
+	top: 30px;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+ul.tab-label {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul.tab-label > li {
+	float: left;
+	padding: 0;
+	margin:  2px 1px 0 0;
+	color: #2779AA;
+	border: solid 1px #AED0EA;
+	background-image: url("../images/horizontalButtonBackground.png");
+	background-position: center;
+	background-repeat: repeat-x;
+}
+ul.tab-label > li:hover {
+	background-image: url("../images/horizontalButtonBackground_hover.png");
+}
+ul.tab-label > li.selected {
+	color: white;
+	border-color: #75C3EB;
+	background-image: url("../images/horizontalButtonBackground_selected.png");
+}
+ul.tab-label > li > a {
+	display: block;
+	padding: .2em 1em;
+	color: inherit;
+	font-weight: bold;
+	font-size: larger;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+}

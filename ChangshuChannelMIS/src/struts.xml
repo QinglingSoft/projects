@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<include file="struts-admin.xml"/>
+	<include file="struts-article.xml"/>
+	<package name="default" namespace="/" extends="json-default">
+		<action name="previewFileTypeData" class="previewFileTypeDataAction"
+			method="preview">
+			<result type="redirect">${iconPath}</result>
+			<result name="mediaTypeNull" type="redirect">/images/none.png</result>
+			<result name="mimeTypeNull" type="redirect">/images/fileType/unknown.png</result>
+			<result name="imageNull" type="redirect">/images/none.png</result>
+			<result name="image" type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="allowCaching">false</param>
+			</result>
+			<result name="error" type="httpheader">
+				<param name="error">505</param>
+				<param name="errorMessage">${errorMessage}</param>
+			</result>
+			<result name="fieldNull" type="redirect">images/noPicture.gif</result>
+		</action>
+		<action name="downloadFileTypeData" class="downloadFileTypeDataAction"
+			method="download">
+			<result name="success" type="stream">
+				<param name="contentType">${fileToDownload.contentType}</param>
+				<param name="contentLength ">${fileToDownload.contentLength}</param>
+				<param name="inputName">fileStream</param>
+				<param name="allowCaching">false</param>
+				<param name="contentDisposition">attachment;filename="${fileToDownload.fileName}"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="error" type="httpheader">
+				<param name="error">505</param>
+				<param name="errorMessage">${errorMessage}</param>
+			</result>
+			<result name="fieldNull" type="redirect">images/noPicture.gif</result>
+		</action>
+		<action name="addData" class="addDataAction" method="add">
+			<result type="json">
+				<param name="root">jsonResult</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">jsonResult</param>
+			</result>
+		</action>
+		<action name="deleteData" class="deleteDataAction" method="delete">
+			<result type="json">
+				<param name="root">jsonResult</param>
+			</result>
+		</action>
+		<action name="updateFieldValue" class="updateFieldValueAction" method="update">
+			<result type="json">
+				<param name="root">jsonResult</param>
+			</result>
+		</action>
+		<action name="updateFileTypeField" class="updateFileTypeFieldAction" method="update">
+			<result type="json">
+				<param name="root">jsonResult</param>
+				<param name="contentType">text/html</param>
+				<param name="wrapPrefix"><![CDATA[<textarea>]]></param>
+  				<param name="wrapSuffix"><![CDATA[</textarea>]]></param>
+			</result>
+		</action>
+		<action name="search" class="searchAction" method="buildConditionList">
+			<result>searchListFrame.jsp</result>
+		</action>
+		<action name="addAdvancedSearchCondition" class="advancedSearchAction" method="addCondition">
+			<result>ajax/advancedSearchConditionList.jsp</result>
+		</action>
+		<action name="deleteAdvancedSearchCondition" class="advancedSearchAction" method="deleteCondition">
+			<result>ajax/advancedSearchConditionList.jsp</result>
+			<result name="error">ajax/advancedSearchConditionList.jsp</result>
+		</action>
+		<action name="advancedSearch" class="advancedSearchAction" method="acceptConditionList">
+			<result>searchListFrame.jsp</result>
+		</action>
+		<action name="login" class="securityAction" method="login">
+			<result type="redirect">index.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="logout" class="securityAction" method="logout">
+			<result type="redirect">login.jsp</result>
+		</action>
+		<action name="changePassword" class="securityAction" method="changePassword">
+			<result>changePassword.jsp</result>
+			<result name="error">changePassword.jsp</result>
+		</action>
+		<action name="statisticExportExcel" class="statisticExportAction"
+			method="exportExcel">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}.xls"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="error" type="httpheader">
+				<param name="error">505</param>
+			</result>
+		</action>
+	</package>
+</struts>

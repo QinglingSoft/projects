@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+table.tableData {
+	width: 100%;
+	border-collapse: collapse;
+	border: solid gray 1px;
+	margin-bottom: 1em;
+}
+table.tableData th, table.tableData td {
+	border: solid silver 1px;
+	padding: .2em .5em;
+}
+table.tableData th {
+	text-align: right;
+	font-weight: normal;
+	max-width: 8em;
+	min-width: 3em;
+}
+table.tableData td {
+	white-space: nowrap;
+}
+table.tableData tr:hover {
+	background-color: #e8f2fe;
+}
+table.tableData img.dataImage {
+	clear: both;
+	border: none;
+	max-width: 200px;
+	max-height: 200px;
+}
+table.tableData img.dataIcon {
+	clear: both;
+	border: none;
+	display: block;
+}
+table.tableData input,
+table.tableData textarea {
+	width: 140px;
+}
+table.tableData select {
+	width: 146px;
+}
+table.tableData option.null {
+	color: gray;
+}
+table.tableData .changed {
+	background-color: #FFD0D0;
+}
+table.tableData .updating {
+	background-image: url("../images/loading_s.gif");
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+table.tableData .updated {
+	background-image: url("../images/successIcon.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+table.tableData textarea.updating {
+	background-position: 85% 100%;
+}
+table.tableData textarea.updated {
+	background-position: 85% 100%;
+}
+table.tableData select.updating {
+	background-position: 85% 50%;
+}
+table.tableData select.updated {
+	background-position: 85% 50%;
+}

@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+
+.pageTurner {
+	width: 100%;
+}
+
+.pageTurner img {
+	border: none;
+}
+
+.pageTurner>table {
+	width: 100%;
+}
+
+.pageTurner>table td {
+	width: 33%;
+	white-space: nowrap;
+}
+
+.pageTurner .prevPage {
+	text-align: left;
+}
+
+.pageTurner .pageNumber {
+	text-align: center;
+}
+
+.pageTurner .pageNumberSelect {
+	min-width: 5em;
+}
+
+.pageTurner .nextPage {
+	text-align: right;
+}
