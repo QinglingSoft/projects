@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description>Bingqiang list tags</description>
+	<display-name>List tag</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>list</short-name>
+	<uri>http://www.qinglingsoft.com/java/webFramework/list</uri>
+	<tag-file>
+		<description>One page list</description>
+		<name>onePage</name>
+		<path>/META-INF/tags/list/onePage.tag</path>
+		<example>
+			&lt;list:onePage items="${users}" label="user" functionLabel="New User" functionUrl="newUser.jsp"&gt;
+				&lt;jsp:attribute name="tableHead"&gt;
+					&lt;th&gt;ID&lt;/th&gt;
+					&lt;th&gt;Name&lt;/th&gt;
+				&lt;/jsp:attribute&gt;
+				&lt;jsp:attribute name="tableBody"&gt;
+					&lt;td&gt;${entry.id}&lt;/td&gt;
+					&lt;td&gt;${entry.name}&lt;/td&gt;
+				&lt;/jsp:attribute&gt;
+			&lt;/list:onePage&gt;
+		</example>
+	</tag-file>
+	<tag-file>
+		<description>
+			More page list with page turner.
+			The pageHelper attribute must be a subclass of com.qinglingsoft.webframework.web.PageHelper.
+		</description>
+		<name>morePage</name>
+		<path>/META-INF/tags/list/morePage.tag</path>
+		<example>
+			&lt;list:morePage pageHelper="${userPageHelper}" label="user" functionLabel="New User" functionUrl="newUser.jsp"&gt;
+				&lt;jsp:attribute name="tableHead"&gt;
+					&lt;th&gt;ID&lt;/th&gt;
+					&lt;th&gt;Name&lt;/th&gt;
+				&lt;/jsp:attribute&gt;
+				&lt;jsp:attribute name="tableBody"&gt;
+					&lt;td&gt;${entry.id}&lt;/td&gt;
+					&lt;td&gt;${entry.name}&lt;/td&gt;
+				&lt;/jsp:attribute&gt;
+			&lt;/list:onePage&gt;
+		</example>
+	</tag-file>
+	<tag-file>
+		<description>Page turner of more page list. Must be called by &lt;list:morePage&gt;.</description>
+		<name>pageTurner</name>
+		<path>/META-INF/tags/list/pageTurner.tag</path>
+		<example>
+			&lt;list:pageTurner styleClass="turnPage" pageHelper="${userPageHelper}"/&gt;
+		</example>
+	</tag-file>
+</taglib>

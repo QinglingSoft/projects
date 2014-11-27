@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description>Web Framework Spring tags</description>
+	<display-name>Spring functions</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>spring</short-name>
+	<uri>http://www.qinglingsoft.com/java/webFramework/spring</uri>
+	<tag>
+		<description>
+        	Works like a &lt;jsp:useBean&gt; action in a spring container. But does not create a scripting variable.
+    	</description>
+		<name>useBean</name>
+		<tag-class>com.qinglingsoft.webframework.SpringSupportTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description>
+				The name used to identify the object instance in the
+				specified scope’s namespace.
+				The name specified is case sensitive.
+			</description>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<description>
+				The bean name defined in spring context.
+				If the type and beanName attributes are not specified the
+				object must be present in the given scope.
+			</description>
+			<name>beanName</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<description>
+				The fully qualified name of the class that defines the
+				implementation of the object. The class name is case
+				sensitive.
+				If the type and beanName attributes are not specified the
+				object must be present in the given scope.
+			</description>
+			<name>type</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<description>
+				The scope within which the reference is available. The
+				default value is page. A translation error must
+				occur if scope is not one of “page”, “request”, “session” or
+				“application”.
+			</description>
+			<name>scope</name>
+			<required>false</required>
+		</attribute>
+
+	</tag>
+</taglib>
