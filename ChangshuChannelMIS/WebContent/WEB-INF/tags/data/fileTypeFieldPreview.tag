@@ -1,7 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8" body-content="empty"%>
-<%@ attribute name="dataTable" description="数据表" required="true" type="com.chaos.roadbridge.model.DataTable" %>
+<%@ attribute name="dataTable" description="数据表" required="true" type="com.qinglingsoft.changshuchannel.model.DataTable" %>
 <%@ attribute name="data" description="记录数据" required="true" type="java.util.Map" %>
-<%@ attribute name="field" description="字段" required="true" type="com.chaos.roadbridge.model.DataField" %>
+<%@ attribute name="field" description="字段" required="true" type="com.qinglingsoft.changshuchannel.model.DataField" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%-- 生成预览地址，用时间令牌避免缓存 --%>

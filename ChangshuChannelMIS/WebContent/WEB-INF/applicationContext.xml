@@ -5,9 +5,9 @@
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd ">
-	<context:component-scan base-package="com.chaos.roadbridge" />
+	<context:component-scan base-package="com.qinglingsoft.changshuchannel" />
 	<jee:jndi-lookup id="backupFolder" jndi-name="backupFolder" />
-	<jee:jndi-lookup id="qlMediaImportErrorFolder" jndi-name="qlMediaImportErrorFolder" />
+	<jee:jndi-lookup id="mediaImportErrorFolder" jndi-name="mediaImportErrorFolder" />
 	
 	<!-- 缓存设置 -->
 	<bean id="dataTableCache" class="java.lang.Boolean">
@@ -15,15 +15,15 @@
 	</bean>
 	
 	<!-- 数据访问 -->
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/RoadBridgeDB" />
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/ChangshuChannelDB" />
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/hibernate.cfg.xml" />
-		<property name="packagesToScan" value="com.chaos.roadbridge.model" />
+		<property name="packagesToScan" value="com.qinglingsoft.changshuchannel.model" />
 	</bean>
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<tx:annotation-driven />

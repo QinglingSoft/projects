@@ -1,5 +1,5 @@
 <%@ tag language="java" pageEncoding="UTF-8" body-content="empty"%>
-<%@ attribute name="field" description="字段描述" required="true" type="com.chaos.roadbridge.model.DataField" %>
+<%@ attribute name="field" description="字段描述" required="true" type="com.qinglingsoft.changshuchannel.model.DataField" %>
 <%@ attribute name="data" description="数据对象" required="true" type="java.util.Map" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>

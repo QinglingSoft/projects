@@ -10,14 +10,14 @@
 	<Environment description="备份文件夹" name="backupFolder"
 		type="java.lang.String"
 		override="false"
-		value="/roadBridge/backup" />
-	<Environment description="桥梁媒体导入错误包文件夹" name="qlMediaImportErrorFolder"
+		value="/ChangshuChannelMIS/backup" />
+	<Environment description="媒体导入错误包文件夹" name="mediaImportErrorFolder"
 		type="java.lang.String"
 		override="false"
-		value="/roadBridge/qlMediaImportError" />
-	<Resource name="jdbc/RoadBridgeDB" type="javax.sql.DataSource"
-		driverClassName="net.sourceforge.jtds.jdbc.Driver" url="jdbc:jtds:sqlserver://localhost:1433/roadBridge"
-		username="roadBridge" password="roadBridge" validationQuery="select 1"
+		value="/ChangshuChannelMIS/mediaImportError" />
+	<Resource name="jdbc/ChangshuChannelDB" type="javax.sql.DataSource"
+		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://localhost;databaseName=ChangshuChannel;"
+		username="ChangshuChannel" password="ChangshuChannel" validationQuery="select 1"
 		maxIdle="4" maxWait="5000" maxActive="8" removeAbandoned="true"
 		removeAbandonedTimeout="8">
 	</Resource>

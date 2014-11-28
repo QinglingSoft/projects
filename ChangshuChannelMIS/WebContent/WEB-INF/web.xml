@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>roadBridge-web</display-name>
   <filter>
     <display-name>SecurityFilter</display-name>
     <filter-name>SecurityFilter</filter-name>
-    <filter-class>com.chaos.roadbridge.web.SecurityFilter</filter-class>
+    <filter-class>com.qinglingsoft.changshuchannel.web.SecurityFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>SecurityFilter</filter-name>
@@ -33,7 +33,7 @@
   </filter-mapping>
   <filter>
     <filter-name>DefaultMapLayerSetFilter</filter-name>
-    <filter-class>com.chaos.roadbridge.web.DefaultMapLayerSetFilter</filter-class>
+    <filter-class>com.qinglingsoft.changshuchannel.web.DefaultMapLayerSetFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>DefaultMapLayerSetFilter</filter-name>
@@ -49,11 +49,11 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <context-param>
-    <param-name>com.qinglingsoft.webframework.webframework.helper.DEFAULT_PAGE_SIZE</param-name>
+    <param-name>com.qinglingsoft.webframework.helper.DEFAULT_PAGE_SIZE</param-name>
     <param-value>30</param-value>
   </context-param>
   <resource-ref>
-    <res-ref-name>jdbc/RoadBridgeDB</res-ref-name>
+    <res-ref-name>jdbc/ChangshuChannelDB</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
     <res-sharing-scope>Shareable</res-sharing-scope>
@@ -62,13 +62,13 @@
     <description>备份文件夹</description>
     <env-entry-name>backupFolder</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>/roadBridge/backup</env-entry-value>
+    <env-entry-value>/ChangshuChannelMIS/backup</env-entry-value>
   </env-entry>
   <env-entry>
-    <description>桥梁媒体导入错误包文件夹</description>
-    <env-entry-name>qlMediaImportErrorFolder</env-entry-name>
+    <description>航道媒体导入错误包文件夹</description>
+    <env-entry-name>channelMediaImportErrorFolder</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>/roadBridge/qlMediaImportError</env-entry-value>
+    <env-entry-value>/ChangshuChannelMIS/channelMediaImportError</env-entry-value>
   </env-entry>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -76,17 +76,17 @@
   </welcome-file-list>
   <listener>
   	<description>启动时创建超级管理员</description>
-    <listener-class>com.chaos.roadbridge.web.SuperAdminCreateListener</listener-class>
+    <listener-class>com.qinglingsoft.changshuchannel.web.SuperAdminCreateListener</listener-class>
   </listener>
   <listener>
   	<description>启动时创建访客用户</description>
-    <listener-class>com.chaos.roadbridge.web.GuestUserCreateListener</listener-class>
+    <listener-class>com.qinglingsoft.changshuchannel.web.GuestUserCreateListener</listener-class>
   </listener>
   <filter>
     <description>系统维护时禁止业务访问</description>
     <display-name>SystemMaintainingFilter</display-name>
     <filter-name>SystemMaintainingFilter</filter-name>
-    <filter-class>com.chaos.roadbridge.web.SystemMaintainingFilter</filter-class>
+    <filter-class>com.qinglingsoft.changshuchannel.web.SystemMaintainingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>SystemMaintainingFilter</filter-name>

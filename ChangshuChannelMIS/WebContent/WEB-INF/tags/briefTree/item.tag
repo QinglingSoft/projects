@@ -1,5 +1,5 @@
 <%@ tag language="java" pageEncoding="UTF-8" body-content="empty" %>
-<%@ attribute name="dataTable" description="数据表" required="true" type="com.chaos.roadbridge.model.DataTable" %>
+<%@ attribute name="dataTable" description="数据表" required="true" type="com.qinglingsoft.changshuchannel.model.DataTable" %>
 <%@ attribute name="catalog" description="子表所在的栏目" required="true" type="java.lang.String" %>
 <%@ attribute name="brief" description="摘要数据" required="true" type="java.util.Map" %>
 <%@ attribute name="displayTableLabel" description="显示表标签" required="false" type="java.lang.Boolean" %>
