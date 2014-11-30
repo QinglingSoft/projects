@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<sql:setDataSource dataSource="jdbc/RoadBridgeDB"/>
+<%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
+<spring:useBean id="dataSource" beanName="dataSource" />
+<sql:setDataSource dataSource="${dataSource}"/>
 <sql:query var="result">
 	select qlbm, qlbh, qlmc, centerzh from T_QL where lxbm=? and ldxlh=? order by centerzh
 	<sql:param value="${param.lxbm}"/>

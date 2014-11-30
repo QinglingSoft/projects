@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -44,7 +45,8 @@
 </style>
 </head>
 <body>
-<sql:setDataSource dataSource="jdbc/RoadBridgeDB"/>
+<spring:useBean id="dataSource" beanName="dataSource" />
+<sql:setDataSource dataSource="${dataSource}"/>
 <c:set var="loginUser" value="${sessionScope.loginUser}"/>
 <c:set var="xzqhPrefix"><c:choose>
 	<c:when test="${loginUser.admin}"></c:when>

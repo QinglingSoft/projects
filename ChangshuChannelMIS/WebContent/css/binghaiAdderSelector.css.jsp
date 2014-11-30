@@ -3,7 +3,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<sql:setDataSource dataSource="jdbc/RoadBridgeDB"/>
+<%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
+<spring:useBean id="dataSource" beanName="dataSource" />
+<sql:setDataSource dataSource="${dataSource}"/>
 <c:if test="${not empty param.SBJGXS}">
 <sql:query var="result">
 	select binghaiTable from SBJGXS_binghaiTable where SBJGXS=?

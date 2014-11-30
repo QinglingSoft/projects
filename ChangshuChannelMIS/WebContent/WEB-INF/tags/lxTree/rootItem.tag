@@ -3,7 +3,9 @@
 <%@ attribute name="itemLabel" description="列表项文字标签" required="true" type="java.lang.String" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<sql:setDataSource dataSource="jdbc/RoadBridgeDB"/>
+<%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
+<spring:useBean id="dataSource" beanName="dataSource"></spring:useBean>
+<sql:setDataSource dataSource="${dataSource}"/>
 <sql:query var="result">
 	select count(*) as count from T_LD where lxbm like ?
 	<sql:param value="${lxbmPrefix}%"/>
