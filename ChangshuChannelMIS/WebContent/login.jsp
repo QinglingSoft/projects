@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="x-ua-compatible" content="ie=8" /> 
 <link href="css/default.css" rel="stylesheet" type="text/css" />
-<title>桥梁管理及安全监控系统</title>
+<title>常熟市航道管理信息系统</title>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <style>
 	body {

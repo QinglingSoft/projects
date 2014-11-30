@@ -13,7 +13,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="x-ua-compatible" content="ie=8" /> 
-	<title>桥梁管理及安全监控系统</title>
+	<title>常熟市航道管理信息系统</title>
 	<link href="css/default.css" rel="stylesheet" type="text/css" />
 	<link href="css/mainFrame.css" rel="stylesheet" type="text/css" />
 	<link href="css/normalSearch.css" rel="stylesheet" type="text/css" />
@@ -85,8 +85,8 @@
 </head>
 <body>
 	<div id="header" class="ui-layout-north ui-widget-header">
-		<div class="title">桥梁管理及安全监控系统</div>
-		<div class="subtitle">Bridge Management and Safety Monitoring System</div>
+		<div class="title">常熟市航道管理信息系统</div>
+		<div class="subtitle">Changshu Channel Management Information System</div>
 		<div id="clock"></div>
 		<div id="topLevelFunctions">
 			<ul>
@@ -96,8 +96,8 @@
 				<li><a href="logout.action" target="_top">退出登录</a></li>
 				<li><a id="copyrightLink" href="javascript:void(0)">关于
 					<span id="copyright">
-						桥梁管理及安全监控系统 v1.0<br/>
-						版权所有 &copy; 2010
+						常熟市航道管理信息系统 v1.0<br/>
+						版权所有 &copy; 2014
 					</span>
 				</a></li>
 			</ul>
