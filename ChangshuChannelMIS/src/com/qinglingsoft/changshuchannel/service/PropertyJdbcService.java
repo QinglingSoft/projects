@@ -72,7 +72,7 @@ public class PropertyJdbcService {
 		String sql = "select count(*) from " + tableName
 				+ buildWhereClause(params);
 		logger.finer(sql);
-		long totalCount = jdbcTemplate.queryForObject(sql, params, long.class);
+		long totalCount = jdbcTemplate.queryForObject(sql, params, Long.class);
 
 		String briefFieldsClause = buildBriefAndPkFieldsClause(tableName);
 		sql = "select " + briefFieldsClause + " from " + tableName
@@ -126,7 +126,7 @@ public class PropertyJdbcService {
 				+ buildWhereClause(parentPrimaryKeyValues);
 		logger.finer(sql);
 		long count = jdbcTemplate.queryForObject(sql, parentPrimaryKeyValues,
-				long.class);
+				Long.class);
 		return count > 0;
 
 	}
@@ -338,7 +338,7 @@ public class PropertyJdbcService {
 		String whereClause = buildWhereClause(conditions, params);
 		String sql = "select count(*) from " + tableName + whereClause;
 		logger.finer(sql);
-		long totalCount = jdbcTemplate.queryForObject(sql, params, long.class);
+		long totalCount = jdbcTemplate.queryForObject(sql, params, Long.class);
 
 		String briefFieldsClause = buildBriefAndPkFieldsClause(tableName);
 		sql = "select " + briefFieldsClause + " from " + tableName
