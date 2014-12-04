@@ -54,7 +54,7 @@
 		}, 500);
 	}
 	$(function(){
-		if ($("#addDialog form input[type!=hidden]").length + $("#addDialog form select").length + $("#addDialog form textarea").length == 0) {
+		if ($("#newRootDataForm input[type!=hidden]").length + $("#newRootDataForm select").length + $("#newRootDataForm textarea").length == 0) {
 			updateTips("新增记录");
 		}
 		
