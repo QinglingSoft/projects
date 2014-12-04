@@ -13,6 +13,10 @@ public class EncryptService {
 	private String algorithm = "SHA-1";
 
 	public String encrypt(String source) {
+		if (source == null) {
+			return null;
+		}
+
 		StringBuffer sb = new StringBuffer();
 		try {
 			MessageDigest alga = MessageDigest.getInstance(algorithm);
