@@ -231,7 +231,7 @@ public class PropertyJdbcService {
 		sql += whereClause;
 		logger.finer(sql);
 		int count = jdbcTemplate.queryForObject(sql, primaryKeyValues,
-				int.class);
+				Integer.class);
 		if (count == 0) {
 			throw new NoRecordFoundException();
 		}
@@ -273,7 +273,7 @@ public class PropertyJdbcService {
 		sql += whereClause;
 		logger.finer(sql);
 		int count = jdbcTemplate.queryForObject(sql, primaryKeyValues,
-				int.class);
+				Integer.class);
 		if (count == 0) {
 			throw new NoRecordFoundException();
 		}
