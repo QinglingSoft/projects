@@ -210,8 +210,13 @@ public class DataField {
 		this.unit = unit;
 	}
 
+	/**
+	 * 目前认为，主键且为数字型的字段应由数据库生成。如日后有GUID等其它类型的库生成字段，还需修改此段逻辑。
+	 * 
+	 * @return 该字段是否需由数据库生成
+	 */
 	public boolean isGeneratedByDatabase() {
-		return this.isPrimaryKey() || this.type == Type.NUMBER;
+		return this.isPrimaryKey() && this.type == Type.NUMBER;
 	}
 
 	@Override
