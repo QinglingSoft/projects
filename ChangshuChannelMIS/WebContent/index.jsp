@@ -106,27 +106,10 @@
 	</div>
 	<div class="ui-layout-west">
 		<div id="menu">
-		    <h3><a href="#">地图管理</a></h3>
+		    <h3><a href="#">地图</a></h3>
 		    <div>
 		    	<ul>
 		    		<li class="link"><a href="/YZGL/mapload.jsp">地图浏览</a></li>
-		    		<li class="catalog expanded">
-		    			<div class="title">地图信息</div>
-		    			<map:layerSelector />
-		    		</li>
-		    	
-		    		<li class="catalog collapse">
-		    			<div class="title">背景信息</div>
-		    			<ul>
-		    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_LD">路段</a></li>
-		    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_SD">隧道</a></li>
-		    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_DK">渡口</a></li>
-		    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_XZ">乡镇</a></li>
-		    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_JZC">建制村</a></li>
-		    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_CXX">村小学</a></li>
-		    			</ul>
-		    		</li>
-		    	
 				</ul>
 			</div>
 
@@ -137,20 +120,21 @@
 						<c:param name="dataTableName" value="T_HD" />
 						<c:param name="catalog" value="航道基础信息管理" />
 					</c:url>
-					<li class="link"><a href="${url}">航道基础信息管理</a></li>
+					<li class="link"><a href="${url}">航道基础信息一览</a></li>
 				</ul>
 		    </div>
 		   
 			<h3><a href="#">航道工程管理</a></h3>
 		    <div>
 				<ul>
+   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GC_HDGHML">航道工程规划目录</a></li>
 					<c:url var="url" value="treeFrame.jsp">
 						<c:param name="dataTableName" value="T_GC_HDGHML" />
 						<c:param name="catalog" value="航道工程管理" />
 					</c:url>
-					<li class="link"><a href="${url}">规划、计划及统计、执行</a></li>
+					<li class="link"><a href="${url}">规划、计划及统计、执行一览</a></li>
    					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GC_QZSCJH">维护措施目录</a></li>
-    				<li class="link"><a href="building.html">航道工程完成情况</a></li>
+    				<li class="link"><a href="demo/demo.jsp?title=航道工程完成情况">航道工程完成情况</a></li>
 				</ul>
 		    </div>
 		   
@@ -165,9 +149,10 @@
 		    <h3><a href="#">航政业务管理</a></h3>
 		    <div>
 				<ul>
-     				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHJH">航政巡航计划</a></li>
-    				<li class="link"><a href="building.html">航政巡航里程</a></li>
-    				<li class="link"><a href="building.html">航政巡航费用</a></li>
+     				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHJH">航政巡航计划维护</a></li>
+    				<li class="link"><a href="demo/demo.jsp?title=巡航计划表">巡航计划表</a></li>
+    				<li class="link"><a href="demo/demo.jsp?title=巡航里程计算">航政巡航里程</a></li>
+    				<li class="link"><a href="demo/demo.jsp?title=巡航费用计算表">航政巡航费用</a></li>
     				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_THBZQK">航道通航保证情况</a></li>
     				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XKDJ">航道证许可事项登记</a></li>
 		    	</ul>
@@ -176,14 +161,12 @@
 			<h3><a href="#">航道管理部门</a></h3>
 		    <div>
 				<ul>
+   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GL_HDGLJG">航道管理机构列表</a></li>
 					<c:url var="url" value="treeFrame.jsp">
 						<c:param name="dataTableName" value="T_GL_HDGLJG" />
 						<c:param name="catalog" value="航道管理部门" />
 					</c:url>
-   					<li class="link"><a href="${url})">航道管理机构</a></li>
-   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GL_HDGLJG">航道管理机构一览</a></li>
-   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GL_HDZZJG">航道组织机构一览</a></li>
-   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GL_HDGLRY">航道管理人员一览</a></li>
+   					<li class="link"><a href="${url})">航道管理机构一览</a></li>
 				</ul>
 		    </div>
 			
