@@ -24,6 +24,7 @@
 	<link type="text/css" href="css/cupertino/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
 	<link href="css/pageTurner.css" rel="stylesheet" type="text/css" />
 	<link href="css/briefTree.css" rel="stylesheet" type="text/css" />
+	<link href="css/briefTree-addDialog.css" rel="stylesheet" type="text/css" />
 	<link href="css/briefTree-tableIcon.css.jsp" rel="stylesheet" type="text/css" />
 	<link href="css/briefTreeList.css" rel="stylesheet" type="text/css" />
 	<link href="css/treeRightClickMenu.css" rel="stylesheet" type="text/css" />
