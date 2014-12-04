@@ -28,7 +28,7 @@
 	<c:forEach items="${dataTable.catalogChildrenMap[param.catalog]}" var="childTable">
 		<c:set target="${childTableDataHelper}" property="dataTableName" value="${childTable.name}" />
 		<c:if test="${childTable.multi or not childTableDataHelper.hasRecord}">
-			<li class="adder" dataTableName="${childTable.name}" parentPrimaryKeyValues="${primaryKeyValues}">增加${childTable.label}</li>
+			<li class="adder" dataTableName="${childTable.name}" dataTableLabel="${childTable.label}" parentPrimaryKeyValues="${primaryKeyValues}">增加${childTable.label}</li>
 		</c:if>
 	</c:forEach>
 	<c:if test="${not empty dataTable.parent}">
