@@ -1,4 +1,7 @@
 @CHARSET "UTF-8";
+#addDialog {
+	width: 300px;
+}
 #addDialog p {
 	margin: .2em 0;
 	padding: 0;
