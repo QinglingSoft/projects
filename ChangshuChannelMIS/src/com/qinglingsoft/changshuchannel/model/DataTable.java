@@ -1,8 +1,10 @@
 package com.qinglingsoft.changshuchannel.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -166,18 +168,22 @@ public class DataTable {
 
 	public Map<String, List<DataTable>> getCatalogChildrenMap() {
 		if (catalogChildrenMap == null) {
-			catalogChildrenMap = new HashMap<String, List<DataTable>>();
-			for (DataTable child : children) {
-				List<DataTable> catalogChildren = catalogChildrenMap.get(child
-						.getCatalog());
-				if (catalogChildren == null) {
-					catalogChildren = new ArrayList<DataTable>();
-					catalogChildrenMap.put(child.getCatalog(), catalogChildren);
-				}
-				catalogChildren.add(child);
-			}
+			buildCatalogChildrenMap();
 		}
 		return catalogChildrenMap;
+	}
+
+	private void buildCatalogChildrenMap() {
+		HashMap<String, List<DataTable>> ccm = new HashMap<>();
+		for (DataTable child : children) {
+			List<DataTable> catalogChildren = ccm.get(child.getCatalog());
+			if (catalogChildren == null) {
+				catalogChildren = new LinkedList<DataTable>();
+				ccm.put(child.getCatalog(), catalogChildren);
+			}
+			catalogChildren.add(child);
+		}
+		catalogChildrenMap = Collections.unmodifiableMap(ccm);
 	}
 
 	@Override
