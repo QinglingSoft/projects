@@ -11,7 +11,7 @@
 	
 	<!-- 是否缓存描述表实体，调试时设置为false，发布时设置为true -->
 	<bean id="dataTableCache" class="java.lang.Boolean">
-		<constructor-arg value="false" />
+		<constructor-arg value="true" />
 	</bean>
 	
 	<!-- 数据访问 -->
