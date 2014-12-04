@@ -187,10 +187,14 @@ public class PropertyJdbcService {
 		// 组织SQL与执行
 		StringBuilder sqlSb = new StringBuilder("insert into ");
 		List<String> paramNameList = new ArrayList<String>(params.keySet());
-		sqlSb.append(dataTableName).append("(")
-				.append(StringUtils.join(paramNameList, ',')).append(")");
-		sqlSb.append(" values(:")
-				.append(StringUtils.join(paramNameList, ", :")).append(")");
+		sqlSb.append(dataTableName);
+		if (!paramNameList.isEmpty()) {
+			sqlSb.append("(").append(StringUtils.join(paramNameList, ','))
+					.append(") values(:")
+					.append(StringUtils.join(paramNameList, ", :")).append(")");
+		} else {
+			sqlSb.append(" default values");
+		}
 		String sql = sqlSb.toString();
 		logger.finer(sql);
 		KeyHolder gkh = new GeneratedKeyHolder();
