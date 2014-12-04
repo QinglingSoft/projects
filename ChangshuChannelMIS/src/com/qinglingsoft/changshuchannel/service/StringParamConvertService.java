@@ -51,6 +51,7 @@ public class StringParamConvertService {
 			break;
 		case DATETIME:
 			obj = java.sql.Timestamp.valueOf(str);
+			break;
 		default:
 			throw new FieldTypeUnsupportedException(field.getDataTable()
 					.getName(), field.getName(), field.getType().toString());

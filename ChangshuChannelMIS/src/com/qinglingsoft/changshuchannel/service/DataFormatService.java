@@ -61,7 +61,9 @@ public class DataFormatService {
 					.getName(), field.getName(), field.getType().toString());
 		case NUMBER:
 			NumberFormat numberFormat = NumberFormat.getNumberInstance();
-			numberFormat.setMaximumFractionDigits(field.getFractionDigits());
+			numberFormat.setGroupingUsed(false);
+			Integer fd = field.getFractionDigits();
+			numberFormat.setMaximumFractionDigits(fd != null ? fd : 0);
 			return numberFormat.format(dataValue);
 		case STRING:
 		case TEXT:
