@@ -21,13 +21,27 @@
 			}
 			$("#detail").attr("src", "tableDetail.jsp?" + $.param(params));
 		}
+		
+		function newRootDataAdded(primaryKeyValues) {
+			var params = {dataTableName: "${dataTable.name}"};
+			for (var pkName in primaryKeyValues) {
+				params["primaryKeys." + pkName] = primaryKeyValues[pkName];
+			}
+			$("#detail").attr("src", "tableDetail.jsp?" + $.param(params));
+			
+			window.frames["briefList"].location.reload();
+		}
+		
+		function addRootData() {
+			$("#detail").attr("src", "newRootData.jsp?dataTableName=${dataTable.name}");
+		}
 	</script>
 </head>
 <frameset cols="75%, 25%">
 	<c:url var="briefListUrl" value="briefList.jsp">
 		<c:param name="dataTableName" value="${dataTable.name}"/>
 	</c:url>
-    <frame name="bridgeList" src="${briefListUrl}" />
+    <frame name="briefList" src="${briefListUrl}" />
     <frame id="detail" name="detail" src="" />
     <noframes>
     <body>

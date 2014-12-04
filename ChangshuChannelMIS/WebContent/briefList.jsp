@@ -32,6 +32,10 @@
 				window.parent.briefSelected(primaryKeyValues);
 				$(this).addClass("selected").siblings().removeClass("selected");
 			});
+			
+			$("#addRootDataButton").click(function(){
+				window.parent.addRootData();
+			});
 		});
 	</script>
 </head>
@@ -43,6 +47,7 @@
 <list:pageTurner styleClass="pageTurner ui-widget-header" pageHelper="${briefPage}" linkParams="${linkParams}" />
 
 <table class="briefList">
+	<caption style="text-align: right"><button id="addRootDataButton">新增</button></caption>
 	<thead class="ui-widget-header">
 		<tr>
 			<c:forEach items="${dataTable.briefFields}" var="field">
@@ -51,6 +56,7 @@
 					<c:if test="${not empty field.unit}">(${field.unit})</c:if>
 				</th>
 			</c:forEach>
+			<th>操作</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -79,16 +85,18 @@
 							<td><fmt:formatDate type="BOTH" value="${brief[field.name]}" /></td>
 						</c:when>
 						<c:when test="${field.type == 'CODE'}">
-							<td ${unitTitle}>${field.codeTable.codes[brief[field.name]]}</td>
+							<td ${unitTitle}>${field.codeTable.codes[brief[field.name]].meaning}</td>
 						</c:when>
 						<c:otherwise>
 							<td>${field.type}型</td>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
+				<td>删除</td>
 			</tr>
 		</c:forEach>
 	</tbody>
+	
 </table>
 </body>
 </html>
