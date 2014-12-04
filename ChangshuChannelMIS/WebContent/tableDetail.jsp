@@ -27,7 +27,7 @@
 	<link type="text/css" href="css/cupertino/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
 	<link type="text/css" href="css/tableDetail.css" rel="stylesheet" />	
 	<link type="text/css" href="css/record.css" rel="stylesheet" />	
-	<title>${dataTable.label}</title>
+	<title>${dataTable.label} 详情</title>
 	<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
