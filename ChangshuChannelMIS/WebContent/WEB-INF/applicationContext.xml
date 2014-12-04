@@ -9,9 +9,9 @@
 	<jee:jndi-lookup id="backupFolder" jndi-name="backupFolder" />
 	<jee:jndi-lookup id="qlMediaImportErrorFolder" jndi-name="mediaImportErrorFolder" />
 	
-	<!-- 缓存设置 -->
+	<!-- 是否缓存描述表实体，调试时设置为false，发布时设置为true -->
 	<bean id="dataTableCache" class="java.lang.Boolean">
-		<constructor-arg value="true" />
+		<constructor-arg value="false" />
 	</bean>
 	
 	<!-- 数据访问 -->
