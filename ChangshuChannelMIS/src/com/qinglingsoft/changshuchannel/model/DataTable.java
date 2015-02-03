@@ -19,31 +19,84 @@ import javax.persistence.OrderBy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+/**
+ * 业务数据表描述实体
+ *
+ */
 @Entity
 public class DataTable {
+	/**
+	 * 数据库中的表名，作为有意义的主键
+	 */
 	@Id
 	private String name;
-	private String catalog;// 栏目，信息、检查、病害
-	private String label;// 标签
+	/**
+	 * 本表所述的栏目，父表可能关联很多字表，但有的页面仅需要展示其中一部分子表，便将子表按栏目划分，展示时只列出特定栏目的子表
+	 */
+	private String catalog;// 所属栏目
+	/**
+	 * 用于页面展示的文字
+	 */
+	private String label;
+	/**
+	 * 排序权重，不必连续，初始设置时以10为跨度，以便于日后调整安插
+	 */
 	private Integer orderWeight;
+	/**
+	 * 与父表是否为多对一关系，在本项目中目前有父表的都是多对一，该字段暂时没有发挥作用
+	 */
 	private boolean multi;
+	/**
+	 * 本表的父表对象
+	 */
 	@ManyToOne(optional = true)
 	private DataTable parent;
+	/**
+	 * 本表的子表列表
+	 */
 	@OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
 	@OrderBy("orderWeight")
 	private List<DataTable> children;
+	/**
+	 * 本表包含的字段列表
+	 */
 	@OneToMany(mappedBy = "dataTable", fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
 	@OrderBy("orderWeight")
 	private Set<DataField> fields = new HashSet<DataField>();
+	/**
+	 * 主键字段列表，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 */
 	transient private List<DataField> primaryKeys;
+	/**
+	 * 摘要字段列表，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 */
 	transient private List<DataField> briefFields;
+	/**
+	 * 栏目-子表映射关系，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 */
 	transient private Map<String, List<DataTable>> catalogChildrenMap;
+	/**
+	 * 主键名集合，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 */
 	transient private Set<String> primaryKeyNames;
+	/**
+	 * 字段名-字段实体映射表，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 */
 	transient private Map<String, DataField> fieldsMap;
+	/**
+	 * 查询条件字段列表，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 * 过往项目曾有需求，在不修改代码的情况下，通过调整数据库来决定哪些字段作为查询条件
+	 */
 	transient private List<DataField> searchConditionFields;
+	/**
+	 * 子表名-字表实体映射关系，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 */
 	transient private Map<String, DataTable> childrenMap;
+	/**
+	 * 摘要字段集合，不持久化，第一次访问时通过对fields属性分析产生，为不在每次访问时都轮询fields列表进行分析而存在
+	 */
 	transient private Set<String> briefFieldNames;
 
 	public String getName() {
