@@ -2,9 +2,13 @@ package com.qinglingsoft.changshuchannel.model;
 
 import java.io.Serializable;
 
+/**
+ * DataField实体的ID实体，完全为ORM而存在
+ *
+ */
 public class DataFieldId implements Serializable {
 
-	private static final long serialVersionUID = 4L;
+	private static final long serialVersionUID = 5L;
 	private String dataTable;
 	private String name;
 

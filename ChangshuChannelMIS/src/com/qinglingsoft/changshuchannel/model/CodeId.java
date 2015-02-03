@@ -2,10 +2,20 @@ package com.qinglingsoft.changshuchannel.model;
 
 import java.io.Serializable;
 
+/**
+ * 代码表条目ID，仅为ORM存在
+ *
+ */
 public class CodeId implements Serializable {
 
-	private static final long serialVersionUID = 3L;
+	private static final long serialVersionUID = 4L;
+	/**
+	 * 所属代码表
+	 */
 	private String codeTable;
+	/**
+	 * 代码值
+	 */
 	private String value;
 
 	public String getCodeTable() {

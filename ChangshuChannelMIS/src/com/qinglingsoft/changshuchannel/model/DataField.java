@@ -13,9 +13,15 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * 业务表字段描述
+ */
 @Entity
 @IdClass(DataFieldId.class)
 public class DataField {
+	/**
+	 * 用于查询条件的操作符
+	 */
 	public static enum Operator {
 		EQ("等于"), LIKE("包含"), LE("≤"), GE("≥"), IN("∈");
 		private String text;
@@ -29,13 +35,26 @@ public class DataField {
 		}
 	}
 
+	/**
+	 * 字段类型，人本类型，与显示有关，不等同于数据库类型或编程语言类型
+	 *
+	 */
 	public static enum Type {
+		/**
+		 * STRING为短字符串，一般用输入框（input标签）展示； TEXT为长字符串，一般用文本框（textarea标签）展示
+		 */
 		STRING(String.class, Operator.EQ, Operator.LIKE), FILE(byte[].class), DATE(
 				Date.class, Operator.EQ, Operator.LE, Operator.GE), DATETIME(
 				Date.class, Operator.GE, Operator.LE), NUMBER(Number.class,
 				Operator.EQ, Operator.GE, Operator.LE), TEXT(String.class,
 				Operator.LIKE), CODE(String.class, Operator.IN);
+		/**
+		 * 相对应的Java类型
+		 */
 		private Class<?> javaType;
+		/**
+		 * 支持的查询条件操作符
+		 */
 		private EnumSet<Operator> supportOperators;
 
 		Type(Class<?> javaType, Operator... operators) {
@@ -59,28 +78,76 @@ public class DataField {
 
 	}
 
+	/**
+	 * 所属数据表
+	 */
 	@Id
 	@ManyToOne(optional = false)
 	@JoinColumn(nullable = false)
 	private DataTable dataTable;
+	/**
+	 * 字段名称
+	 */
 	@Id
 	private String name;
-	private Integer orderWeight;// 排序号，从小到大，不需要连续
-	private boolean visible;// 可见性
-	private boolean editable;// 可编辑
-	private boolean nullable;// 可为空
-	private boolean primaryKey;// 是否主键
-	private boolean brief;// 是否摘要字段
-	private boolean searchCondition;// 是否为查询条件字段
+	/**
+	 * 配需权重，小的优先，不必连续，初始设置时跨度为10，以便于日后调整安插
+	 */
+	private Integer orderWeight;
+	/**
+	 * 字段在详情展示页是否可见，一般无意义主键和外键不必显示
+	 */
+	private boolean visible;
+	/**
+	 * 字段是否可编辑，日后不可修改的字段即为不可编辑，例如有意义主键。不可编辑字段必须在记录创建时就把内容填充好
+	 */
+	private boolean editable;
+	/**
+	 * 字段是否可为空
+	 */
+	private boolean nullable;
+	/**
+	 * 字段是否为所属表的主键
+	 */
+	private boolean primaryKey;
+	/**
+	 * 字段是否为所属表的摘要字段，所属表的列表或树状展示时将列出摘要字段
+	 */
+	private boolean brief;
+	/**
+	 * 是否为查询条件字段
+	 */
+	private boolean searchCondition;
+	/**
+	 * 字段在界面上显示出的文字
+	 */
 	private String label;
+	/**
+	 * 字段的人本类型
+	 */
 	@Enumerated(EnumType.STRING)
-	private Type type;// 字段类型
-	private Integer length;// 字段长度
-	private Integer fractionDigits;// 小数位
+	private Type type;
+	/**
+	 * 字段长度，用于显示时先定输入框长度，避免超出数据库允许范围
+	 */
+	private Integer length;
+	/**
+	 * 字段小数位，用于展示时规定截断
+	 */
+	private Integer fractionDigits;
+	/**
+	 * 字段引用的代码表，当type为CODE时有意义
+	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	private CodeTable codeTable;// 代码表
+	private CodeTable codeTable;
+	/**
+	 * 媒体类型字段，暂时想不起来是什么意义了，与图片等多媒体信息有关
+	 */
 	private String mediaTypeField;
-	private String unit;// 单位
+	/**
+	 * 字段单位，用于显示
+	 */
+	private String unit;
 
 	public DataTable getDataTable() {
 		return dataTable;

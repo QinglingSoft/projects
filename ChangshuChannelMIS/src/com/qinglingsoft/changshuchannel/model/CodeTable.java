@@ -10,11 +10,24 @@ import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+/**
+ * 代码表
+ *
+ */
 @Entity
 public class CodeTable {
+	/**
+	 * 表名
+	 */
 	@Id
 	private String name;
+	/**
+	 * 描述，亦即其汉语意义
+	 */
 	private String description;
+	/**
+	 * 代码-代码实体映射关系
+	 */
 	@OneToMany(mappedBy = "codeTable", fetch = FetchType.EAGER)
 	@OrderBy("value")
 	@MapKeyColumn(name = "value")

@@ -11,22 +11,44 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+/**
+ * 代码表条目
+ *
+ */
 @Entity
 @IdClass(CodeId.class)
 public class Code {
+	/**
+	 * 所属代码表
+	 */
 	@Id
 	@ManyToOne(optional = false)
 	@JoinColumn(nullable = false)
 	private CodeTable codeTable;
+	/**
+	 * 代码值
+	 */
 	@Id
 	private String value;
+	/**
+	 * 汉语意义
+	 */
 	private String meaning;
+	/**
+	 * 如果代码有层级关系，则本代码在第几层，1为根层（最顶层）
+	 */
 	private Integer level;
+	/**
+	 * 父代码，如果代码有层级关系的话
+	 */
 	@ManyToOne(optional = true)
-	@JoinColumns( {
+	@JoinColumns({
 			@JoinColumn(name = "codeTable_name", insertable = false, updatable = false),
 			@JoinColumn(name = "parent_value", insertable = false, updatable = false) })
 	private Code parent;
+	/**
+	 * 字代码列表，如果代码有层级关系的话
+	 */
 	@OneToMany(mappedBy = "parent")
 	@OrderBy("value")
 	private List<Code> children;
