@@ -15,12 +15,13 @@
  	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript">
 		function treeItemSelected(params) {
+			params["flag"] = "0";  // 属性页面单双列标示，0双列
 			var url = "tableDetail.jsp?" + $.param(params);
 			$("#tableDetail").attr("src", url);
 		}
 	</script>
 </head>
-<frameset cols="50%, 50%">
+<frameset cols="30%, 70%">
 	<c:url var="briefTreeListUrl" value="briefTreeList.jsp">
 		<c:param name="dataTableName" value="${dataTable.name}"/>
 		<c:param name="catalog" value="${param.catalog}"/>

@@ -131,6 +131,13 @@
 </head>
 <body>
 	<div class="title ui-widget-header">${dataTable.label}</div>
-	<data:record data="${data}" dataTable="${dataTable}" />
+	<c:choose>
+		<c:when test="${param.flag == '0'}">
+			<data:recordEven data="${data}" dataTable="${dataTable}" />
+		</c:when>
+		<c:otherwise>
+			<data:record data="${data}" dataTable="${dataTable}" />
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
