@@ -13,7 +13,14 @@
 	</c:forEach>
 	})
 </c:set>
-<li dataTableName="${dataTable.name}" catalog="${catalog}" primaryKeyValues="${pkJson}">
+
+<c:set var="pkJsonId">
+	<c:forEach items="${dataTable.primaryKeys}" var="pk" varStatus="status">
+		<c:if test="${not status.first}">_</c:if>
+		${pk.name}_${brief[pk.name]}
+	</c:forEach>
+</c:set>
+<li dataTableName="${dataTable.name}" catalog="${catalog}" primaryKeyValues="${pkJson}" id="${pkJsonId}">
 	<c:if test="${not empty dataTable.catalogChildrenMap[catalog]}">
 		<div class="expander"></div>
 	</c:if>

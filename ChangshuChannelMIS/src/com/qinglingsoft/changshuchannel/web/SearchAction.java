@@ -41,6 +41,16 @@ public class SearchAction implements SessionAware {
 	private Map<String, String> conditions;
 	private List<String> childRecordExistsConditions;
 	private Map<String, String> childTableConditions;
+	private List<Condition> conditionList;
+
+	
+	public List<Condition> getConditionList() {
+		return conditionList;
+	}
+
+	public void setConditionList(List<Condition> conditionList) {
+		this.conditionList = conditionList;
+	}
 
 	public List<String> getChildRecordExistsConditions() {
 		return childRecordExistsConditions;
@@ -118,6 +128,24 @@ public class SearchAction implements SessionAware {
 		return Action.SUCCESS;
 	}
 
+	public String buildConditionListGeneral() {
+		conditionList = new ArrayList<Condition>();
+		if (conditions != null && !conditions.isEmpty()) {
+			conditionList.addAll(stringConditionConvertService.convert(
+					dataTableName, conditions));
+		}
+		if (childRecordExistsConditions != null
+				&& !childRecordExistsConditions.isEmpty()) {
+			conditionList
+					.addAll(buildChildRecordExistsConditions(childRecordExistsConditions));
+		}
+		if (childTableConditions != null && !childTableConditions.isEmpty()
+				&& childTableName != null) {
+			conditionList.add(buildChildTableCondition());
+		}
+		return Action.SUCCESS;
+	}
+	
 	private Condition buildChildTableCondition() {
 		ChildTableCondition ctCondition = new ChildTableCondition(
 				childTableName);

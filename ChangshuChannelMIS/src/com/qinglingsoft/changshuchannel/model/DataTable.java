@@ -215,6 +215,13 @@ public class DataTable {
 					searchConditionFields.add(field);
 				}
 			}
+			for (DataTable child : children) {
+				for (DataField field : child.getFields()) {
+					if (field.isSearchCondition()) {
+						searchConditionFields.add(field);
+					}
+				}
+			}
 		}
 		return searchConditionFields;
 	}

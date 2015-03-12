@@ -194,7 +194,7 @@
 			<h3><a href="#">航道基础信息管理</a></h3>
 		    <div>
 				<ul>
-					<c:url var="url" value="treeFrame.jsp">
+					<c:url var="url" value="searchTreeFrame.jsp">
 						<c:param name="dataTableName" value="T_HD" />
 						<c:param name="catalog" value="航道基础信息管理" />
 					</c:url>
@@ -206,7 +206,7 @@
 		    <div>
 				<ul>
    					<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_GC_HDGHML">航道工程规划目录</a></li>
-					<c:url var="url" value="treeFrame.jsp">
+					<c:url var="url" value="searchTreeFrame.jsp">
 						<c:param name="dataTableName" value="T_GC_HDGHML" />
 						<c:param name="catalog" value="航道工程管理" />
 					</c:url>
@@ -240,7 +240,7 @@
 		    <div>
 				<ul>
    					<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_GL_HDGLJG">航道管理机构列表</a></li>
-					<c:url var="url" value="treeFrame.jsp">
+					<c:url var="url" value="searchTreeFrame.jsp">
 						<c:param name="dataTableName" value="T_GL_HDGLJG" />
 						<c:param name="catalog" value="航道管理部门" />
 					</c:url>

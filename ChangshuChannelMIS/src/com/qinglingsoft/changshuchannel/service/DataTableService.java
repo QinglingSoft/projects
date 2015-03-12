@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +61,14 @@ public class DataTableService {
 		return sessionFactory.getCurrentSession()
 				.createCriteria(DataTable.class)
 				.add(Restrictions.eq("catalog", catalog)).list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<DataTable> findByCatalogUnName(String catalog,String name) {
+		return sessionFactory.getCurrentSession()
+				.createCriteria(DataTable.class)
+				.add(Restrictions.ne("name", name))
+				.add(Restrictions.eq("catalog", catalog)).addOrder(Order.asc("orderWeight")).list();
 	}
 
 	@SuppressWarnings("unchecked")

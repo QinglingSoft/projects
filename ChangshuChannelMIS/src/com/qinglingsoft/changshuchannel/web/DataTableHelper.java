@@ -16,16 +16,25 @@ public class DataTableHelper {
 	@Resource
 	private DataTableService dataTableService;
 	private String dataTableName;
+	private String catalog;
 
 	public void setDataTableName(String dataTableName) {
 		this.dataTableName = dataTableName;
 	}
 
+	public void setCatalog(String catalog) {
+		this.catalog = catalog;
+	}
+	
 	public DataTable getDataTable() {
 		return dataTableService.findByName(dataTableName);
 	}
 
 	public List<DataTable> getAll() {
 		return dataTableService.findAll();
+	}
+	
+	public List<DataTable> getDataTableList() {
+		return dataTableService.findByCatalogUnName(catalog,dataTableName);
 	}
 }

@@ -67,6 +67,9 @@
   				<param name="wrapSuffix"><![CDATA[</textarea>]]></param>
 			</result>
 		</action>
+		<action name="searchGeneral" class="searchAction" method="buildConditionListGeneral">
+			<result>oneBriefList.jsp</result>
+		</action>
 		<action name="search" class="searchAction" method="buildConditionList">
 			<result>searchListFrame.jsp</result>
 		</action>

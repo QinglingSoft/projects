@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+.dataTableSearch{
+	width:95%;
+	margin:2px 5px;
+	padding: 9px;
+	border: 1px solid #e3e3e3;
+	border-bottom-color: #e0e0e0;
+	border-right-color: #ececec;
+	box-shadow: 1px 2px 1px rgba(0,0,0,0.072);
+	-webkit-box-shadow: 1px 2px 1px rgba(0,0,0,0.072);
+	-moz-box-shadow: 1px 2px 1px rgba(0,0,0,0.072);
+	-o-box-shadow: 1px 2px 1px rgba(0,0,0,0.072);
+	float:left;
+}
+.normalSearch label {
+	white-space: nowrap;
+}
+.normalSearch ul {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	float:left;
+}
+
+.normalSearch ul li{
+	float:left;
+	margin: 5px 5px;
+}
+
+.normalSearch button{
+	float:right;
+	margin:5px 5px;
+	clear:both;
+}
+.clear {
+	clear:both;
+}
+
+#searchDiv img{
+	display: block; 
+	margin:auto;
+	cursor: pointer;
+	clear:both;
+} 
