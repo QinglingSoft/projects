@@ -1,0 +1,88 @@
+为报表功能加入“航道工程完成情况维护”和“航政巡航费用维护”表并初始化。初始化语句如下：
+
+
+CREATE TABLE [dbo].[T_GC_HDGCWCQK](
+	[GCWCQKID] [int] IDENTITY(1,1) NOT NULL,
+	[GCWCRQ] [datetime] NULL,
+	[QCXMMC] [varchar](5) NULL,
+	[QCXMDDLB] [varchar](200) NULL,
+	[GCNRKY] [varchar](200) NULL,
+	[BYJHGZL] [varchar](200) NULL,
+	[BYSJWCL] [varchar](200) NULL,
+	[ZNCLJWCGZL] [varchar](200) NULL,
+	[BNJHGZLHY] [numeric](12, 3) NULL,
+	[BNSJWCLHY] [numeric](12, 3) NULL,
+	[ZNCLJWCGZLHY] [numeric](12, 3) NULL,
+	[BZ] [varchar](254) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[GCWCQKID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+INSERT [dbo].[DataTable] ([name], [catalog], [label], [multi], [orderWeight], [parent_name]) VALUES (N'T_GC_HDGCWCQK', N'航道工程管理', N'航道工程完成情况维护', 0, NULL, NULL)
+
+
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'GCWCQKID', 10, N'工程完成情况ID', N'NUMBER', 6, NULL, 1, 0, 0, NULL, 0, 1, 0, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'GCWCRQ', 20, N'工程完成情况时间', N'DATETIME', NULL, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'QCXMMC', 30, N'工程项目名称', N'CODE', 1, NULL, 1, 0, 1, NULL, 0, 0, 1, N'TC_HDGCXM', NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'QCXMDDLB', 40, N'工程地点线别', N'STRING', 200, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'GCNRKY', 50, N'工程内容概要', N'STRING', 200, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'BYJHGZL', 60, N'本年计划工程量', N'STRING', 200, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'BYSJWCL', 70, N'本月实际完成工程量', N'STRING', 200, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'ZNCLJWCGZL', 80, N'自年初累计实际完成工程量', N'STRING', 200, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'BNJHGZLHY', 90, N'本年计划工作量（千元）', N'NUMBER', 12, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'BNSJWCLHY', 100, N'本月实际完成工作量（千元）', N'NUMBER', 12, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'ZNCLJWCGZLHY', 110, N'自年初累计实际完成工作量（千元）', N'NUMBER', 12, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'BZ', 470, N'备注', N'TEXT', 254, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+
+
+
+CREATE TABLE [dbo].[T_HZ_XHFY](
+	[XHFYID] [int] IDENTITY(1,1) NOT NULL,
+	[XHSJ] [datetime] NULL,
+	[SGCZ] [varchar](1) NULL,
+	[ZJGL] [numeric](8, 3) NULL,
+	[YHL] [varchar](20) NULL,
+	[YH] [numeric](8, 3) NULL,
+	[JHXHLC] [numeric](8, 3) NULL,
+	[SJXHSX] [numeric](8, 3) NULL,
+	[SJSHLC] [numeric](8, 3) NULL,
+	[HS] [numeric](8, 3) NULL,
+	[SJXHSJ] [numeric](8, 3) NULL,
+	[HYCYSL] [numeric](8, 3) NULL,
+	[CYH] [numeric](8, 3) NULL,
+	[ZJWBFYSX] [numeric](8, 3) NULL,
+	[ZJWBFY] [numeric](8, 3) NULL,
+	[FDZJWBFY] [numeric](8, 3) NULL,
+	[QYHXCTZHY] [numeric](8, 3) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[XHFYID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+INSERT [dbo].[DataTable] ([name], [catalog], [label], [multi], [orderWeight], [parent_name]) VALUES (N'T_HZ_XHFY', N'航政业务管理', N'航政巡航里程维护', 0, NULL, NULL)
+
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'XHFYID', 10, N'巡航费用ID', N'NUMBER', 6, NULL, 1, 0, 0, NULL, 0, 1, 0, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'XHSJ', 20, N'巡航时间', N'DATETIME', NULL, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'SGCZ', 30, N'巡航车船', N'CODE', 1, NULL, 1, 0, 1, NULL, 0, 0, 1, N'TC_XHCC', NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'ZJGL', 40, N'主机功率（KW）', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'YHL', 50, N'油耗率(Kg/h.MW)', N'STRING', 20, NULL, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'JHXHLC', 60, N'计划巡航里程(公里)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'SJXHSX', 70, N'实际巡航系数', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'SJSHLC', 80, N'实际巡航里程(公里)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'HS', 90, N'航速(Km/h)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'SJXHSJ', 100, N'实际巡航时间(小时)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'HYCYSL', 110, N'耗用柴油数量Kg', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'CYH', 120, N'柴油费', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'ZJWBFYSX', 130, N'主机维保费用(元/h)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'ZJWBFY', 140, N'主机维保费用(元)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'FDZJWBFY', 150, N'发电机组维保费用', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'QYHXCTZHY', 160, N'全年巡航船艇总费用(元)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
+
+
+
+INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'SFYCC', 180, N'是否已拆除', N'CODE', 1, NULL, 0, 0, 1, NULL, 1, 0, 1, N'TC_LOGIC', NULL)

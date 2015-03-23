@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<link href="../css/default.css" rel="stylesheet" type="text/css" />
+<link href="../css/briefList.css" rel="stylesheet" type="text/css" />
+<link href="../css/generalSearch.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	table.briefList th {
+		text-align: center;
+	}
+	table.headerInfo {
+		min-width: 100%;
+		border-collapse: collapse;
+		border: none;
+		margin-top: 1em;
+	}
+	table.headerInfo th {
+		text-align: left;
+		padding:2px;
+	}
+	table.headerInfo input {
+		width:50px;
+	}
+</style>
+</head>
+<body>
+	<div class="normalSearch content">
+		<ul>
+			<li>
+				<label>时间:</label>
+				<input />
+			</li>
+			<li>
+				<button>查询</button>
+			</li>
+			<li>
+				<button>导出</button>
+			</li>
+		</ul>
+	</div>
+	<table  class="headerInfo">
+		<tr>
+			<th>填报单位（盖章）：常熟市航道管理处</th>
+			<th>2015年4月</th>
+			<th>备案机关：省</th>
+			<th>统计</th>
+		</tr>
+	</table>
+	<table class="briefList">
+		<thead class="ui-widget-header">
+			<tr>
+				<th rowspan="3">工程项目名称</th>
+				<th>工程地点</th>
+				<th>工程内容</th>
+				<th colspan="4">工程量</th>
+				<th colspan="3">工程量(千元)</th>
+			</tr>
+			<tr>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th rowspan="2">计量单位</th>
+				<th rowspan="2">本年计划</th>
+				<th colspan="2">实际完成</th>
+				<th rowspan="2">本年计划</th>
+				<th colspan="2">实际完成</th>
+			</tr>
+			<tr>
+				<th>线&nbsp;别</th>
+				<th>概&nbsp;要</th>
+				<th>本月完成</th>
+				<th>自年初累</th>
+				<th>本月完成</th>
+				<th>自年初累</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>甲</td>
+				<td>乙</td>
+				<td>丙</td>
+				<td>丁</td>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>一、改善工程</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>1.疏 浚</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>立方米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>其中：水下机械方</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>立方米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>干线航道水下机械方</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>立方米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>2.沉石暗礁</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>吨</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>3.暗桩</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>根</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>4.沉船</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>吨/艘</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>5.航道扫床</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>公里</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>9.航道测量</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>公里</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>二、改建工程</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>1.护坡</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>米2/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>其中：新建</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>米2/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>维修</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>米2/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>2.驳岸</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>米2/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>其中：新建</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>米2/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>维修</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>米2/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>3.碍航桥</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>座/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>其中：拆除</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>座/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>改建</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>座/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>4.纤道桥</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>座/米</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>三、航标维修工程小计</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>1.发光标</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>座/公里</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>2.不发光标</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>座/公里</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>3.其他标</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>座/公里</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>四、航养费</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
