@@ -53,11 +53,13 @@ public class PropertyJdbcService {
 		StringBuilder clauseSb = new StringBuilder();
 		if (params != null && !params.isEmpty()) {
 			for (String paramName : params.keySet()) {
-				if (clauseSb.length() > 0) {
-					clauseSb.append(" and");
+				if(params.get(paramName)!=null&&params.get(paramName)!=""){
+					if (clauseSb.length() > 0) {
+						clauseSb.append(" and");
+					}
+					clauseSb.append(" ").append(paramName).append("=:")
+							.append(paramName);
 				}
-				clauseSb.append(" ").append(paramName).append("=:")
-						.append(paramName);
 			}
 		}
 		if (clauseSb.length() > 0) {

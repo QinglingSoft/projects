@@ -82,7 +82,3 @@ INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [typ
 INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'ZJWBFY', 140, N'主机维保费用(元)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
 INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'FDZJWBFY', 150, N'发电机组维保费用', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
 INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_HZ_XHFY', N'QYHXCTZHY', 160, N'全年巡航船艇总费用(元)', N'NUMBER', 8, 3, 0, 0, 1, NULL, 1, 0, 1, NULL, NULL)
-
-
-
-INSERT [dbo].[DataField] ([dataTable_name], [name], [orderWeight], [label], [type], [length], [fractionDigits], [brief], [searchCondition], [editable], [mediaTypeField], [nullable], [primaryKey], [visible], [codeTable_name], [unit]) VALUES (N'T_GC_HDGCWCQK', N'SFYCC', 180, N'是否已拆除', N'CODE', 1, NULL, 0, 0, 1, NULL, 1, 0, 1, N'TC_LOGIC', NULL)
