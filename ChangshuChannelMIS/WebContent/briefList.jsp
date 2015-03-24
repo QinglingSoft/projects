@@ -26,7 +26,17 @@
 	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			var deleteFlag = false;
+			$("table.briefList > tbody > tr > td.delete").click(function(){
+				var pkJson = $(this).parent().attr("primaryKeyValues");
+				var primaryKeyValues = eval(pkJson);
+				window.parent.deleteSelected(primaryKeyValues);
+				$(this).addClass("selected").siblings().removeClass("selected");
+				deleteFlag = true;
+			});
+			
 			$("table.briefList > tbody > tr").click(function(){
+				if(deleteFlag){return;}
 				var pkJson = $(this).attr("primaryKeyValues");
 				var primaryKeyValues = eval(pkJson);
 				window.parent.briefSelected(primaryKeyValues);
@@ -92,7 +102,7 @@
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
-				<td>删除</td>
+				<td class="delete">删除</td>
 			</tr>
 		</c:forEach>
 	</tbody>

@@ -22,6 +22,30 @@
 			$("#detail").attr("src", "tableDetail.jsp?" + $.param(params));
 		}
 		
+		function deleteSelected(primaryKeyValues) {
+			var params = {dataTableName: "${dataTable.name}"};
+			for (var pkName in primaryKeyValues) {
+				params["primaryKeys." + pkName] = primaryKeyValues[pkName];
+			}
+			
+			$.ajax({
+				url:"deleteData.action",
+				data: params,
+				type: "POST",
+				dataType: "json",
+				success: function(jsonResult, textStatus) {
+					if (!jsonResult.success) {
+						alert(jsonResult.errorMessage);
+						return;
+					}
+					window.setTimeout(function() {
+						window.frames["briefList"].location.reload();
+					}, 1000);
+				}
+			});
+			
+		}
+		
 		function newRootDataAdded(primaryKeyValues) {
 			var params = {dataTableName: "${dataTable.name}"};
 			for (var pkName in primaryKeyValues) {
