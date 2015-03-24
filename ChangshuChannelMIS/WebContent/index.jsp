@@ -246,7 +246,7 @@
 						<c:param name="dataTableName" value="T_GL_HDGLJG" />
 						<c:param name="catalog" value="航道管理部门" />
 					</c:url>
-   					<li class="link showTab"><a href="${url})">航道管理机构一览</a></li>
+   					<li class="link showTab"><a href="${url}">航道管理机构一览</a></li>
 				</ul>
 		    </div>
 			
