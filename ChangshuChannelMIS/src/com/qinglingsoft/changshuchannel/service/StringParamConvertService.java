@@ -40,6 +40,9 @@ public class StringParamConvertService {
 		switch (field.getType()) {
 		case CODE:
 		case STRING:
+		case DATEMONTH:
+		case DATEYEAR:
+		case DATEQUARTER:
 		case TEXT:
 			obj = str;
 			break;

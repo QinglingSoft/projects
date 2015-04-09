@@ -134,6 +134,9 @@ public class StringConditionConvertService {
 			return new NumberCondition(field.getName(), field.getLabel(),
 					operator, new BigDecimal(conditionValueStr));
 		case STRING:
+		case DATEMONTH:
+		case DATEYEAR:
+		case DATEQUARTER:
 		case TEXT:
 			return new StringCondition(field.getName(), field.getLabel(),
 					operator, conditionValueStr);

@@ -51,6 +51,21 @@
 									<input class="Wdate" type="text" name="${field.name}" value="${fieldValue}" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" />
 									<button>√</button>
 								</c:when>
+								<c:when test="${field.type == 'DATEMONTH'}">
+									<input type="hidden" value="${data[field.name]}"/>
+									<input class="Wdate" type="text" name="${field.name}" value="${data[field.name]}" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" readonly="readonly" />
+									<button>√</button>
+								</c:when>
+								<c:when test="${field.type == 'DATEYEAR'}">
+									<input type="hidden" value="${data[field.name]}"/>
+									<input class="Wdate" type="text" name="${field.name}" value="${data[field.name]}" onfocus="WdatePicker({dateFmt:'yyyy'})" readonly="readonly" />
+									<button>√</button>
+								</c:when>
+								<c:when test="${field.type == 'DATEQUARTER'}">
+									<input type="hidden" value="${data[field.name]}"/>
+									<input class="Wdate" type="text" name="${field.name}" value="${data[field.name]}" onfocus="WdatePicker({dateFmt:'yyyy年M季度', isQuarter:true, isShowOK:false,disabledDates:['....-0[5-9]-..','....-1[0-2]-..'], startDate:'%y-01-01' })" readonly="readonly" />
+									<button>√</button>
+								</c:when>
 								<c:when test="${field.type == 'CODE'}">
 									<input type="hidden" name="old.${field.name}" value="${fn:trim(data[field.name])}"/>
 									<select name="${field.name}">

@@ -66,6 +66,9 @@ public class DataFormatService {
 			numberFormat.setMaximumFractionDigits(fd != null ? fd : 0);
 			return numberFormat.format(dataValue);
 		case STRING:
+		case DATEMONTH:
+		case DATEYEAR:
+		case DATEQUARTER:
 		case TEXT:
 			return (String) dataValue;
 		}

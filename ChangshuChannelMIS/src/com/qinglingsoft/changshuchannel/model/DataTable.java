@@ -215,13 +215,14 @@ public class DataTable {
 					searchConditionFields.add(field);
 				}
 			}
-			for (DataTable child : children) {
-				for (DataField field : child.getFields()) {
-					if (field.isSearchCondition()) {
-						searchConditionFields.add(field);
-					}
-				}
-			}
+			//查询条件不能子查询，所以不显示
+//			for (DataTable child : children) {
+//				for (DataField field : child.getFields()) {
+//					if (field.isSearchCondition()) {
+//						searchConditionFields.add(field);
+//					}
+//				}
+//			}
 		}
 		return searchConditionFields;
 	}

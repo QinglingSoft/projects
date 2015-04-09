@@ -94,6 +94,15 @@
 						<c:when test="${field.type == 'DATETIME'}">
 							<td><fmt:formatDate type="BOTH" value="${brief[field.name]}" /></td>
 						</c:when>
+						<c:when test="${field.type == 'DATEMONTH'}">
+							<td ${unitTitle}>${brief[field.name]}</td>
+						</c:when>
+						<c:when test="${field.type == 'DATEYEAR'}">
+							<td ${unitTitle}>${brief[field.name]}</td>
+						</c:when>
+						<c:when test="${field.type == 'DATEQUARTER'}">
+							<td ${unitTitle}>${brief[field.name]}</td>
+						</c:when>
 						<c:when test="${field.type == 'CODE'}">
 							<td ${unitTitle}>${field.codeTable.codes[brief[field.name]].meaning}</td>
 						</c:when>

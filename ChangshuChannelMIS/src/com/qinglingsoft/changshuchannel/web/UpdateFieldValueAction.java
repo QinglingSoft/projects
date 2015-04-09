@@ -18,6 +18,7 @@ import com.qinglingsoft.changshuchannel.NoRecordFoundException;
 import com.qinglingsoft.changshuchannel.RecordNotUniqueException;
 import com.qinglingsoft.changshuchannel.service.DataFormatService;
 import com.qinglingsoft.changshuchannel.service.PropertyJdbcService;
+import com.qinglingsoft.changshuchannel.service.ReportService;
 import com.qinglingsoft.changshuchannel.service.StringParamConvertService;
 
 @Component
@@ -30,6 +31,9 @@ public class UpdateFieldValueAction {
 	private StringParamConvertService stringParamConvertService;
 	@Resource
 	private DataFormatService dataFormatService;
+	@Resource
+	private ReportService reportService;
+	
 	private String dataTableName;
 	private Map<String, String> primaryKeys = new HashMap<String, String>();
 	private String fieldName;
@@ -67,6 +71,9 @@ public class UpdateFieldValueAction {
 			jsonResult = JsonResult.success(updateResult == null ? null
 					: dataFormatService.format(dataTableName, fieldName,
 							updateResult));
+			//
+			reportService.setTableValueByParam(dataTableName, fieldName, fieldValue, primaryKeys);
+			
 		} catch (FieldTypeUnsupportedException e) {
 			jsonResult = JsonResult.fail("字段类型" + e.getFieldType() + "不受支持");
 		} catch (NumberFormatException e) {

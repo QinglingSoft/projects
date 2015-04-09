@@ -43,8 +43,9 @@ public class DataField {
 		/**
 		 * STRING为短字符串，一般用输入框（input标签）展示； TEXT为长字符串，一般用文本框（textarea标签）展示
 		 */
-		STRING(String.class, Operator.EQ, Operator.LIKE), FILE(byte[].class), DATE(
-				Date.class, Operator.EQ, Operator.LE, Operator.GE), DATETIME(
+		STRING(String.class, Operator.EQ, Operator.LIKE),DATEMONTH(String.class, Operator.EQ, Operator.LIKE),
+		DATEQUARTER(String.class, Operator.EQ, Operator.LIKE),DATEYEAR(String.class, Operator.EQ, Operator.LIKE),
+		FILE(byte[].class), DATE(Date.class, Operator.EQ, Operator.LE, Operator.GE), DATETIME(
 				Date.class, Operator.GE, Operator.LE), NUMBER(Number.class,
 				Operator.EQ, Operator.GE, Operator.LE), TEXT(String.class,
 				Operator.LIKE), CODE(String.class, Operator.IN);

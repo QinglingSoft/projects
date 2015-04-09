@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<spring:useBean id="report" beanName="reportHelper" />
+<jsp:setProperty name="report" property="*" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +14,8 @@
 <link href="../css/default.css" rel="stylesheet" type="text/css" />
 <link href="../css/briefList.css" rel="stylesheet" type="text/css" />
 <link href="../css/generalSearch.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
 <style type="text/css">
 	table.briefList th {
 		text-align: center;
@@ -30,19 +37,31 @@
 		margin-bottom: 0em; 
 	}
 </style>
+<script type="text/javascript">
+$(function(){
+	$("#queryBt").click(function(){
+		window.location.href = "thbz.jsp?dateStr="+$("input[name=dateStr]").val();
+	});
+	
+	$("#exportBt").click(function(){
+		window.location.href = "thbz2.jsp?dateStr="+$("input[name=dateStr]").val();
+	});
+});
+</script>
 </head>
 <body>
+	<c:set var="reportList" value="${report.channelStateReports}"/>
 	<div class="normalSearch content">
 		<ul>
 			<li>
 				<label>时间:</label>
-				<input />
+				<input class="Wdate" type="text" name="dateStr" value="${report.dateStr}" onfocus="WdatePicker({dateFmt:'yyyy年M季度', isQuarter:true, isShowOK:false,disabledDates:['....-0[5-9]-..','....-1[0-2]-..'], startDate:'%y-01-01' })" readonly="readonly" />
 			</li>
 			<li>
-				<button>查询</button>
+				<button id="queryBt">查询</button>
 			</li>
 			<li>
-				<button>导出</button>
+				<button id="exportBt">导出</button>
 			</li>
 		</ul>
 	</div>
@@ -51,8 +70,8 @@
 			<th colspan="2" style="text-align: center;">航道通航保证情况报表</th>
 		</tr>
 		<tr>
-			<th>单位：常熟市航道管理处</th>
-			<th>统计时间：2015年1月-3月</th>
+			<th>单位：${report.unitName}</th>
+			<th>统计时间：${report.dateStr}</th>
 		</tr>
 	</table>
 	<table class="briefList">
@@ -65,42 +84,20 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach items="${reportList}" var="data">
 			<tr>
-				<td>常浒线</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td>${data.hdmcStr}</td>
+				<td>${data.dhsj}</td>
+				<td>${data.dhyy}</td>
+				<td>${data.thbzl}</td>
 			</tr>
-			<tr>
-				<td>申张线</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>望虞河</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>苏虞线</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>锡虞线</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	<table  class="headerInfo">
 		<tr>
-			<th>填报人：</th>
-			<th>填报时间：2015年3月31日</th>
+			<th>填报人：${report.personName}</th>
+			<th>填报时间：<fmt:formatDate value="${report.otherDate}" pattern="yyyy年MM月dd日"/></th>
 		</tr>
 	</table>
 </body>

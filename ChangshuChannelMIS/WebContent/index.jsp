@@ -213,7 +213,7 @@
 					<li class="link showTab"><a href="${url}">规划、计划及统计、执行一览</a></li>
    					<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_GC_QZSCJH">维护措施目录</a></li>
    					<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_GC_HDGCWCQK">航道工程完成情况维护</a></li>
-    				<li class="link showTab"><a href="demo/hdwchqk.jsp">航道工程完成情况</a></li>
+    				<li class="link showTab"><a href="report/hdwchqk.jsp">航道工程完成情况</a></li>
 				</ul>
 		    </div>
 		   
@@ -229,11 +229,12 @@
 		    <div>
 				<ul>
      				<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHJH">航政巡航计划维护</a></li>
-    				<li class="link showTab"><a href="demo/hzxhjh.jsp">巡航计划表</a></li>
-    				<li class="link showTab"><a href="demo/xhlcjs.jsp">航政巡航里程</a></li>
+    				<li class="link showTab"><a href="report/xhjh.jsp">巡航计划表</a></li>
+    				<li class="link showTab"><a href="report/xhlcjs.jsp">航政巡航里程</a></li>
     				<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHFY">航政巡航费用维护</a></li>
-    				<li class="link showTab"><a href="demo/xhfyjs.jsp">航政巡航费用</a></li>
+    				<li class="link showTab"><a href="report/xhfyjs.jsp">航政巡航费用</a></li>
     				<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_THBZQK">航道通航保证情况</a></li>
+    				<li class="link showTab"><a href="report/thbz.jsp">航道通航保证情况报表</a></li>
     				<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XKDJ">航道证许可事项登记</a></li>
 		    	</ul>
 			</div>
