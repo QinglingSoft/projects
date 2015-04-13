@@ -25,9 +25,7 @@
 <c:forEach items="${dataList}" var="data">
 	<c:forEach items="${dataTable.fields}" var="field">
 		<c:if test="${field.name == param.fieldName and field.type == 'FILE'}">
-			<div class="preview">
-				<data:fileTypeFieldPreview data="${data}" dataTable="${dataTable}" field="${field}"/>
-			</div>
+			<data:fileTypeFieldPreview data="${data}" dataTable="${dataTable}" field="${field}"/>
 		</c:if>
 	</c:forEach>
 </c:forEach>

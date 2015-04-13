@@ -60,9 +60,9 @@ ul.briefTree li.rightClicked>.brief {
 ul.briefTree li>.brief>span {
 	margin-right: .5em;
 }
-ul.briefTree li>ul {
+/* ul.briefTree li>ul {
 	display: none;
-}
+} */
 ul.briefTree li.expanded>ul {
 	display: inherit;
 }

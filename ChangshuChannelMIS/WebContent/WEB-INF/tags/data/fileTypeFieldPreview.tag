@@ -36,4 +36,4 @@
 	<img src="${previewUrl}" width="150px" height="30px" />
 </a>
 <a href="${downloadUrl}" target="_blank">下载</a>
-<a href="javascript:deleteSelected(${primaryKeyValues})" target="_blank">删除</a>
+<a href="#" onclick="deleteSelected(${primaryKeyValues})">删除</a>

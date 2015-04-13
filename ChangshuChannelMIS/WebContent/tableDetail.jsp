@@ -32,7 +32,7 @@
 	<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
-	<script type="text/javascript" src="js/jquery.form.js"></script>
+	<script type="text/javascript" src="js/jquery.uploadform.js"></script>
 	<script type="text/javascript" src="js/roadBridge-base.js"></script>
 	<script type="text/javascript"  src="js/highslide/highslide-full.js"></script>
 	<c:set var="primaryKeysJson">
@@ -107,13 +107,14 @@
 		function fileTypeFieldFormSubmit() {
 			var $sourceForm = $(this);
 			$sourceForm.ajaxSubmit({
-				dataType: "json",
-				complete: function(jsonResult, textStatus) {
-					if (jsonResult.status==200) {
+				success : function(jsonResult, textStatus){
+					jsonResult = jsonResult.substring(jsonResult.indexOf('{'),jsonResult.lastIndexOf('}')+1);
+					var jsonData = eval("(" + jsonResult + ")");
+					if (jsonData.success) {
 						loadFile();
 						$(".fileTypeFieldForm input[type=file]").val("");
 					} else {
-						alert(jsonResult.errorMessage);
+						alert(jsonData.errorMessage);
 					}
 				}
 			});
@@ -198,7 +199,7 @@
 			<input name="upload" type="file" />
 			<button type="submit">√</button>
 	    </form>
-	    <div class="preview" style="margin-top:5px;">
+	    <div class="preview" style="margin-top:5px;padding-bottom:10px">
 		</div>
 	</c:if>
 </body>
