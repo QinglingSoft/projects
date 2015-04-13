@@ -2,6 +2,7 @@ package com.qinglingsoft.changshuchannel.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -9,6 +10,7 @@ import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,9 @@ import com.qinglingsoft.changshuchannel.FieldTypeUnsupportedException;
 import com.qinglingsoft.changshuchannel.JsonResult;
 import com.qinglingsoft.changshuchannel.NoRecordFoundException;
 import com.qinglingsoft.changshuchannel.RecordNotUniqueException;
+import com.qinglingsoft.changshuchannel.model.Code;
+import com.qinglingsoft.changshuchannel.model.CodeTable;
+import com.qinglingsoft.changshuchannel.service.CodeTableService;
 import com.qinglingsoft.changshuchannel.service.PropertyJdbcService;
 import com.qinglingsoft.changshuchannel.service.StringParamConvertService;
 
@@ -30,6 +35,8 @@ public class UpdateFileTypeFieldAction {
 	private PropertyJdbcService propertyJdbcService;
 	@Resource
 	private StringParamConvertService stringParamConvertService;
+	@Resource
+	private CodeTableService codeTableService;
 	private String dataTableName;
 	private String fieldName;
 	private Map<String, String> primaryKeys = new HashMap<String, String>();
@@ -86,6 +93,49 @@ public class UpdateFileTypeFieldAction {
 			jsonResult = JsonResult.fail("文件读取错误");
 		} catch (DataAccessException e) {
 			logger.log(Level.WARNING, "插入文件错误", e);
+			jsonResult = JsonResult.fail("失败：" + e.getLocalizedMessage());
+		}
+
+		return Action.SUCCESS;
+	}
+	
+	public String add() {
+		try {
+			
+			Map<String, Object> keyValues = new HashMap<String, Object>();
+			Map<String, Object> pkeyValues = stringParamConvertService
+					.convert(dataTableName, primaryKeys);
+			
+			// 组织参数表
+			Map<String, Object> params = new HashMap<String, Object>();
+			keyValues.put("OBJECTTABLENAME", dataTableName);
+			params.put("OBJECTTABLENAME", dataTableName);
+			for (Object obj : pkeyValues.values()) {
+				if(obj  instanceof BigDecimal){
+					params.put("OBJECTID", obj);
+					keyValues.put("OBJECTID", obj);
+				}
+			}
+			String extName = uploadFileName.substring(uploadFileName
+					.lastIndexOf('.') + 1);
+			CodeTable codeTable = codeTableService.findByName("TC_MDDM");
+			for (Code c : codeTable.getCodes().values()) {
+				if(c.getMeaning().equalsIgnoreCase(extName)){
+					params.put("MEDIATYPE", c.getValue());
+				}
+			}
+			params.put("MEDIACONTEXT", FileUtils.readFileToByteArray(upload));
+			
+			propertyJdbcService.insert("T_MEDIA", params);
+			jsonResult = JsonResult.success(new FieldIndex(dataTableName,
+					keyValues, "MEDIACONTEXT", uploadContentType));
+		} catch (FieldTypeUnsupportedException e) {
+			jsonResult = JsonResult.fail("文件型字段不可作为主键");
+		} catch (DataAccessException e) {
+			logger.log(Level.WARNING, "插入文件错误", e);
+			jsonResult = JsonResult.fail("失败：" + e.getLocalizedMessage());
+		} catch (IOException e) {
+			logger.log(Level.WARNING, "读取文件错误", e);
 			jsonResult = JsonResult.fail("失败：" + e.getLocalizedMessage());
 		}
 

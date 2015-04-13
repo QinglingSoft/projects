@@ -24,6 +24,16 @@
 	<c:param name="fieldName" value="${field.name}"/>
 	<c:param name="token" value="${token.time}"/>
 </c:url>
-
+<c:set var="primaryKeyValues">
+	({
+	<c:forEach items="${dataTable.primaryKeys}" var="pk" varStatus="status">
+		<c:if test="${not status.first}">,</c:if>${pk.name}: '${data[pk.name]}'
+	</c:forEach>
+	})
+</c:set>
 <%-- 渲染预览图片及连接 --%>
-<a href="${downloadUrl}" target="_blank"><img class="dataImage" src="${previewUrl}" /></a>
+<a id="thumb1" href="${previewUrl}" class="highslide" onclick="return hs.expand(this, { slideshowGroup: '1' })">
+	<img src="${previewUrl}" width="150px" height="30px" />
+</a>
+<a href="${downloadUrl}" target="_blank">下载</a>
+<a href="javascript:deleteSelected(${primaryKeyValues})" target="_blank">删除</a>

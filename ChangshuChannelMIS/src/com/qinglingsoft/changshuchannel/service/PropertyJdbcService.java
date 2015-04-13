@@ -28,6 +28,8 @@ import com.qinglingsoft.changshuchannel.NoRecordFoundException;
 import com.qinglingsoft.changshuchannel.RecordNotUniqueException;
 import com.qinglingsoft.changshuchannel.model.ChildRecordExistsCondition;
 import com.qinglingsoft.changshuchannel.model.ChildTableCondition;
+import com.qinglingsoft.changshuchannel.model.Code;
+import com.qinglingsoft.changshuchannel.model.CodeTable;
 import com.qinglingsoft.changshuchannel.model.Condition;
 import com.qinglingsoft.changshuchannel.model.DataField;
 import com.qinglingsoft.changshuchannel.model.DataTable;
@@ -40,6 +42,8 @@ public class PropertyJdbcService {
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	@Resource
 	private DataTableService dataTableService;
+	@Resource
+	private CodeTableService codeTableService;
 	@Resource
 	private Properties extMimeTypes;
 	private NamedParameterJdbcTemplate jdbcTemplate;
@@ -174,6 +178,14 @@ public class PropertyJdbcService {
 
 		// mediaType即为扩展名
 		String extName = (String) results.get(field.getMediaTypeField());
+		//-----后加入
+		CodeTable codeTable = codeTableService.findByName("TC_MDDM");
+		for (Code c : codeTable.getCodes().values()) {
+			if(c.getValue().equalsIgnoreCase(extName)){
+				extName = c.getMeaning();
+			}
+		}
+		//--------
 		fileName.append(".").append(extName);
 		return new FileTypeValue(fileName.toString(),
 				extMimeTypes.getProperty(extName), fileContent);

@@ -1,6 +1,7 @@
 package com.qinglingsoft.changshuchannel.web;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -35,5 +36,17 @@ public class TableDataHelper {
 			return null;
 		}
 		return propertyJdbcService.findSingleMap(dataTableName, primaryKeys);
+	}
+	
+	/**
+	 * primaryKeys主要是定义为其他参数，并非一定为主键
+	 * @return
+	 */
+	public List<Map<String, Object>> getDataList() {
+		//primaryKeys 
+		if (primaryKeys == null || primaryKeys.isEmpty()) {
+			return null;
+		}
+		return propertyJdbcService.findChildBriefAndPk(dataTableName, primaryKeys);
 	}
 }

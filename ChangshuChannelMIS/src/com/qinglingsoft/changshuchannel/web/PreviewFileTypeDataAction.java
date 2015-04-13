@@ -17,7 +17,10 @@ import org.springframework.stereotype.Component;
 import com.opensymphony.xwork2.Action;
 import com.qinglingsoft.changshuchannel.FieldTypeUnsupportedException;
 import com.qinglingsoft.changshuchannel.IllegalFieldTypeException;
+import com.qinglingsoft.changshuchannel.model.Code;
+import com.qinglingsoft.changshuchannel.model.CodeTable;
 import com.qinglingsoft.changshuchannel.model.FileTypeValue;
+import com.qinglingsoft.changshuchannel.service.CodeTableService;
 import com.qinglingsoft.changshuchannel.service.PropertyJdbcService;
 import com.qinglingsoft.changshuchannel.service.StringParamConvertService;
 
@@ -32,6 +35,8 @@ public class PreviewFileTypeDataAction implements ServletContextAware {
 	private StringParamConvertService stringParamConvertService;
 	@Resource
 	private Properties extMimeTypes;
+	@Resource
+	private CodeTableService codeTableService;
 	private String dataTableName;
 	private Map<String, String> primaryKeys = new HashMap<String, String>();
 	private String fieldName;
@@ -75,6 +80,14 @@ public class PreviewFileTypeDataAction implements ServletContextAware {
 					dataTableName, primaryKeys);
 			String mediaType = propertyJdbcService.findMediaType(dataTableName,
 					pkValues, fieldName);
+			//后加入
+			CodeTable codeTable = codeTableService.findByName("TC_MDDM");
+			for (Code c : codeTable.getCodes().values()) {
+				if(c.getValue().equalsIgnoreCase(mediaType)){
+					mediaType = c.getMeaning();
+				}
+			}
+			//-------
 			if (mediaType == null) {
 				return "mediaTypeNull";
 			}
