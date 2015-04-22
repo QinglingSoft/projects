@@ -27,6 +27,9 @@
 		<c:if test="${field.name == param.fieldName and field.type == 'FILE'}">
 			<data:fileTypeFieldPreview data="${data}" dataTable="${dataTable}" field="${field}"/>
 		</c:if>
+		<div class="highslide-caption">
+			<data:mediaRecord data="${data}" dataTable="${dataTable}"/>
+		</div>
 	</c:forEach>
 </c:forEach>
 </div>

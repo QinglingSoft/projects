@@ -47,6 +47,63 @@
 		var primaryKeys = ${primaryKeysJson};
 		var dataTableName = "${dataTable.name}";
 		var dataTableLabel = "${dataTable.label}";
+		
+		function updateMediaFieldValue(){
+			var tableName;
+			
+			var url = $(this).parents(".highslide-wrapper").find("img").attr("src");
+			var paramStr = url.substring(url.indexOf("?")+1).split("&");
+			var params = {};
+			for (var i=0;i<paramStr.length;i++) {
+				if(paramStr[i].indexOf("primaryKeys")>-1){
+					var keyName =  paramStr[i].split("=")[0];
+					params[keyName] = paramStr[i].split("=")[1];
+				}else if(paramStr[i].indexOf("dataTableName")>-1){
+					tableName = paramStr[i].split("=")[1];
+				}
+			}
+			
+			if ($(this).val() == $(this).siblings("input[type=hidden]").val()) {
+				$(this).removeClass("changed");
+				return;
+			}
+			params.dataTableName= tableName;
+			params.fieldName = $(this).attr("name");
+			params.fieldValue = $(this).val();
+			$(this).attr("disabled", "disabled").addClass("updating");
+			var $sourceElement = $(this);
+			$.ajax({
+				url:"updateFieldValue.action",
+				data: params,
+				type: "POST",
+				dataType: "json",
+				success: function(jsonResult, textStatus) {
+					$sourceElement.removeClass("updating").removeAttr("disabled");
+					if (!jsonResult.success) {
+						alert(jsonResult.errorMessage);
+						$sourceElement.focus();
+						$sourceElement.select();
+						return;
+					}
+					
+					var updateResult = jsonResult.object;
+					if (updateResult == null) {
+						updateResult = "";
+					}
+					$sourceElement
+						.val(updateResult)
+						.removeClass("changed")
+						.siblings("input[type=hidden]")
+							.val(updateResult);
+					$sourceElement.addClass("updated");
+					window.setTimeout(function() {
+						$sourceElement.removeClass("updated");
+					}, 1000);
+					loadFile();
+				}
+			});
+		}
+		
 		function updateFieldValue() {
 			if ($(this).val() == $(this).siblings("input[type=hidden]").val()) {
 				$(this).removeClass("changed");
@@ -145,6 +202,7 @@
 			$(".tableData input[type!=file][class!=Wdate]").live("keypress", valueChanged).live("blur", updateFieldValue);
 			$(".tableData select").live("keypress", valueChanged).live("change", valueChanged).live("blur", updateFieldValue);
 			$(".tableData textarea").live("keypress", valueChanged).live("blur", updateFieldValue);
+			$(".mediaData textarea").live("keypress", valueChanged).live("blur", updateMediaFieldValue);
 			$(".tableData input.Wdate").live("change", valueChanged);
 			$(".tableData input.Wdate + button").live("click", function() {
 				updateFieldValue.call($(this).prev());
@@ -159,10 +217,11 @@
 		hs.transitions = ['expand', 'crossfade'];
 		hs.outlineType = 'rounded-white';
 		hs.fadeInOut = true;
-		hs.numberPosition = 'caption';
 		hs.dimmingOpacity = 0.75;
 		hs.wrapperClassName = 'draggable-header';
-		
+		hs.useBox = true;
+		hs.width = 640;
+		hs.height = 480;
 		// Add the controlbar
 		if (hs.addSlideshow) {
 		    hs.addSlideshow({

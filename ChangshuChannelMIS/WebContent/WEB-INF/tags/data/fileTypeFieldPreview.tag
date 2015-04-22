@@ -33,7 +33,7 @@
 </c:set>
 <%-- 渲染预览图片及连接 --%>
 <a id="thumb1" href="${previewUrl}" class="highslide" onclick="return hs.expand(this, { slideshowGroup: '1' })">
-	<img src="${previewUrl}" width="150px" height="30px" />
+	<img keyValue ="${primaryKeyValues}" name="${dataTable.name}" src="${previewUrl}" width="150px" height="30px" />
 </a>
 <a href="${downloadUrl}" target="_blank">下载</a>
 <a href="#" onclick="deleteSelected(${primaryKeyValues})">删除</a>
