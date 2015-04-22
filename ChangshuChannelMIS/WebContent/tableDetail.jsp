@@ -249,17 +249,15 @@
 			<data:record data="${data}" dataTable="${dataTable}" />
 		</c:otherwise>
 	</c:choose>
-	<c:if test="${dataTable.name != 'T_HD'}"><!--T_HD航道主键id为string非int类型不能保存-->
-		<form class="fileTypeFieldForm" action="addFileTypeField.action" method="post" enctype="multipart/form-data">
-	        <input type="hidden" name="dataTableName" value="${dataTable.name}" />
-			<c:forEach items="${dataTable.primaryKeys}" var="pk">
-				<input type="hidden" name="primaryKeys.${pk.name}" value="${data[pk.name]}" />
-			</c:forEach>
-			<input name="upload" type="file" />
-			<button type="submit">√</button>
-	    </form>
-	    <div class="preview" style="margin-top:5px;padding-bottom:10px">
-		</div>
-	</c:if>
+	<form class="fileTypeFieldForm" action="addFileTypeField.action" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="dataTableName" value="${dataTable.name}" />
+		<c:forEach items="${dataTable.primaryKeys}" var="pk">
+			<input type="hidden" name="primaryKeys.${pk.name}" value="${data[pk.name]}" />
+		</c:forEach>
+		<input name="upload" type="file" />
+		<button type="submit">√</button>
+    </form>
+    <div class="preview" style="margin-top:5px;padding-bottom:10px">
+	</div>
 </body>
 </html>

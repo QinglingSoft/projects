@@ -111,10 +111,8 @@ public class UpdateFileTypeFieldAction {
 			keyValues.put("OBJECTTABLENAME", dataTableName);
 			params.put("OBJECTTABLENAME", dataTableName);
 			for (Object obj : pkeyValues.values()) {
-				if(obj  instanceof BigDecimal){
-					params.put("OBJECTID", obj);
-					keyValues.put("OBJECTID", obj);
-				}
+				params.put("OBJECTID", obj);
+				keyValues.put("OBJECTID", obj);
 			}
 			String extName = uploadFileName.substring(uploadFileName
 					.lastIndexOf('.') + 1);
