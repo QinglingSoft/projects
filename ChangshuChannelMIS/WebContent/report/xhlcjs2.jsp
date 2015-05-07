@@ -8,7 +8,7 @@
     response.setCharacterEncoding("UTF-8");  
     response.setContentType("application/vnd.ms-excel");    
     response.setHeader("Content-Disposition", "attachment;filename=\""  
-            + String.format("%1$tY%1$tm%1$td%1$tH%1$tM%1$tS%1$tL", Calendar.getInstance()) + ".xls\"");     
+    		+ new String( "常熟市航道处巡航里程计算".getBytes("gb2312"), "ISO8859-1" ) + ".xls\"");    
 %> 
 <spring:useBean id="report" beanName="reportHelper" />
 <jsp:setProperty name="report" property="*" />
@@ -52,7 +52,7 @@ xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC
 			<tr>
 				<th>航道名称</th>
 				<th>巡航车船</th>
-				<th>&nbsp;</th>
+				<th>趟次</th>
 				<th>次数</th>
 				<th>里程</th>
 				<th>计划巡航里程</th>

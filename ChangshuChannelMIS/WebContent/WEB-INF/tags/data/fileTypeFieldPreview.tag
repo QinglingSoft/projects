@@ -35,5 +35,5 @@
 <a id="thumb1" href="${previewUrl}" class="highslide" onclick="return hs.expand(this, { slideshowGroup: '1' })">
 	<img keyValue ="${primaryKeyValues}" name="${dataTable.name}" src="${previewUrl}" width="150px" height="30px" />
 </a>
-<a href="${downloadUrl}" target="_blank">下载</a>
-<a href="#" onclick="deleteSelected(${primaryKeyValues})">删除</a>
+<a href="${downloadUrl}" target="_blank"><img title="下载" src="images/download.png"></a>
+<a href="#" onclick="deleteSelected(${primaryKeyValues})"><img title="删除" src="images/delete.png"></a>

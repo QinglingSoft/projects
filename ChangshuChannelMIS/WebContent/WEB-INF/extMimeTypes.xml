@@ -150,6 +150,7 @@
 	<entry key="xht">application/xhtml+xml</entry>
 	<entry key="xhtml">application/xhtml+xml</entry>
 	<entry key="xls">application/vnd.ms-excel</entry>
+	<entry key="xlsx">application/vnd.ms-excel</entry>
 	<entry key="xml">application/xml</entry>
 	<entry key="xpm">image/x-xpixmap</entry>
 	<entry key="xsl">application/xml</entry>

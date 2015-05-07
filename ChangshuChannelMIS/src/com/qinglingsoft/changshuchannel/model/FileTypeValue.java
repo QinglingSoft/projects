@@ -1,5 +1,7 @@
 package com.qinglingsoft.changshuchannel.model;
 
+import java.io.UnsupportedEncodingException;
+
 public class FileTypeValue {
 	private byte[] content;
 	private String contentType;
@@ -20,6 +22,11 @@ public class FileTypeValue {
 	}
 
 	public String getFileName() {
+		try {
+			fileName = new String(fileName.getBytes(), "ISO8859-1");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		return fileName;
 	}
 

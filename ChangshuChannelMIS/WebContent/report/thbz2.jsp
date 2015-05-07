@@ -8,7 +8,7 @@
     response.setCharacterEncoding("UTF-8");  
     response.setContentType("application/vnd.ms-excel");    
     response.setHeader("Content-Disposition", "attachment;filename=\""  
-            + String.format("%1$tY%1$tm%1$td%1$tH%1$tM%1$tS%1$tL", Calendar.getInstance()) + ".xls\"");     
+    		+ new String( "航道通航保证情况报表".getBytes("gb2312"), "ISO8859-1" ) + ".xls\"");    
 %> 
 <spring:useBean id="report" beanName="reportHelper" />
 <jsp:setProperty name="report" property="*" />

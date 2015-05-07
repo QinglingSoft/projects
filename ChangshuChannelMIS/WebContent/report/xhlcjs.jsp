@@ -76,7 +76,7 @@ $(function(){
 			<tr>
 				<th>航道名称</th>
 				<th>巡航车船</th>
-				<th>&nbsp;</th>
+				<th>趟次</th>
 				<th>次数</th>
 				<th>里程</th>
 				<th>计划巡航里程</th>

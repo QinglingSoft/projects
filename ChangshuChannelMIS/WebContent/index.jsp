@@ -236,6 +236,7 @@
     				<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_THBZQK">航道通航保证情况</a></li>
     				<li class="link showTab"><a href="report/thbz.jsp">航道通航保证情况报表</a></li>
     				<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XKDJ">航道证许可事项登记</a></li>
+    				<li class="link showTab"><a href="oneLevelFrame.jsp?dataTableName=T_REPORT">航道管理与养护年报</a></li>
 		    	</ul>
 			</div>
 			

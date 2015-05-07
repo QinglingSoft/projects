@@ -17,22 +17,30 @@
 <script type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
 <style type="text/css">
+	table.briefList {
+		margin-bottom:1em;
+	}
 	table.briefList th {
 		text-align: center;
 	}
-	table.headerInfo {
+	table.headerInfo, table.footerInfo {
 		min-width: 100%;
 		border-collapse: collapse;
 		border: none;
 		margin-top: 1em;
+		margin-left:1em;
 	}
-	table.headerInfo th {
+	table.headerInfo th,table.footerInfo th {
 		text-align: left;
 		padding:2px;
 	}
-	table.headerInfo input {
-		width:50px;
+	table.headerInfo th.center {
+		text-align: center;
 	}
+	table.footerInfo {
+		margin-bottom: 4em;
+	}
+	
 </style>
 <script type="text/javascript">
 $(function(){
@@ -65,10 +73,27 @@ $(function(){
 	</div>
 	<table  class="headerInfo">
 		<tr>
-			<th>填报单位（盖章）：</th>
-			<th><fmt:formatDate value="${report.reportDate}" pattern="yyyy年MM月"/></th>
-			<th>备案机关：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省</th>
-			<th>统计</th>
+			<th colspan="10" style="text-align: center;">航 道 工 程 完 成 情 况 月（年）表</th>
+		</tr>
+		<tr>
+			<th></th><th></th>
+			<th colspan="5"></th>
+			<th class="center">表&nbsp;&nbsp;号：</th>
+		</tr>
+		<tr>
+			<th></th><th></th>
+			<th colspan="5"></th>
+			<th class="center">报送期限：</th>
+		</tr>
+		<tr>
+			<th></th><th></th>
+			<th colspan="5"></th>
+			<th class="center">制表机关：</th>
+		</tr>
+		<tr>
+			<th>填报单位（盖章）：</th><th></th>
+			<th colspan="5"><fmt:formatDate value="${report.reportDate}" pattern="yyyy年MM月"/></th>
+			<th class="center">备案机关：</th>
 		</tr>
 	</table>
 	<table class="briefList">
@@ -93,9 +118,9 @@ $(function(){
 				<th>线&nbsp;别</th>
 				<th>概&nbsp;要</th>
 				<th>本月完成</th>
-				<th>自年初累</th>
+				<th>自年初累计</th>
 				<th>本月完成</th>
-				<th>自年初累</th>
+				<th>自年初累计</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -126,6 +151,15 @@ $(function(){
 			</tr>
 			</c:forEach>
 		</tbody>
+	</table>
+	<table  class="footerInfo">
+		<tr>
+			<th>单位负责人（盖章）：</th><th></th>
+			<th>统计部门负责人（盖章）：</th><th></th>
+			<th>制表人（盖章）：</th><th></th>
+			<th>实际报出日期：</th>
+			<th>&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;日</th>
+		</tr>
 	</table>
 </body>
 </html>

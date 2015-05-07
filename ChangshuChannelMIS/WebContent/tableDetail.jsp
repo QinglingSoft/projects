@@ -249,7 +249,8 @@
 			<data:record data="${data}" dataTable="${dataTable}" />
 		</c:otherwise>
 	</c:choose>
-	<form class="fileTypeFieldForm" action="addFileTypeField.action" method="post" enctype="multipart/form-data">
+	<div class="ui-widget-header" style="padding: .2em 1em;margin:1em 0em;font-size: larger;">多媒体资源</div>
+	<form style="margin:0px 5px;" class="fileTypeFieldForm" action="addFileTypeField.action" method="post" enctype="multipart/form-data">
         <input type="hidden" name="dataTableName" value="${dataTable.name}" />
 		<c:forEach items="${dataTable.primaryKeys}" var="pk">
 			<input type="hidden" name="primaryKeys.${pk.name}" value="${data[pk.name]}" />
@@ -257,7 +258,7 @@
 		<input name="upload" type="file" />
 		<button type="submit">√</button>
     </form>
-    <div class="preview" style="margin-top:5px;padding-bottom:10px">
+    <div class="preview" style="margin:5px 0px 0px 5px;padding-bottom:10px">
 	</div>
 </body>
 </html>
