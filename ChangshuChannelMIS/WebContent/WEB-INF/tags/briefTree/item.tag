@@ -30,6 +30,9 @@
 		</c:if>
 		<c:forEach items="${dataTable.briefFields}" var="field">
 			<span><data:simpleField data="${brief}" field="${field}" /></span>
+			<c:if test="${field.name == 'QDMC'&& not empty brief[field.name]}">
+				-
+			</c:if>
 		</c:forEach>
 	</div>
 </li>
