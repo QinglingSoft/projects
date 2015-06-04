@@ -23,6 +23,7 @@ $(function() {
 				$(this).children().removeClass('ui-state-error');
 				$(this).children("form").ajaxSubmit({
 					dataType: 'json',
+					type: "POST",
 					success: function(jsonResult) {
 						if (jsonResult.success) {
 							var $sourceLi = roadBridge.$rightClickedElement;

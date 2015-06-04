@@ -10,10 +10,24 @@ $(function(){
 		for (var pkName in primaryKeyValues) {
 			params["primaryKeys." + pkName] = primaryKeyValues[pkName];
 		}
-		$.getJSON("deleteData.action", params, function(jsonResult) {
-			if (jsonResult.success) {
-				$sourceLi.remove();
+		$.ajax({
+			url:"deleteData.action",
+			data: params,
+			type: "POST",
+			dataType: "json",
+			success: function(jsonResult, textStatus) {
+				if (!jsonResult.success) {
+					alert(jsonResult.errorMessage);
+				}else{
+					$sourceLi.remove();
+					window.parent.resetDetail();
+				}
 			}
 		});
+//		$.getJSON("deleteData.action", params, function(jsonResult) {
+//			if (jsonResult.success) {
+//				$sourceLi.remove();
+//			}
+//		});
 	});
 });

@@ -26,7 +26,9 @@
 			var url = "tableDetail.jsp?" + $.param(params);
 			$("#tableDetail").attr("src", url);
 		}
-		
+		function resetDetail() {
+			$("#tableDetail").attr("src", "");
+		}
 	</script>
 </head>
 <frameset cols="35%, 65%">

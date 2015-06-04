@@ -53,6 +53,9 @@
 			<result type="json">
 				<param name="root">jsonResult</param>
 			</result>
+			<result name="error" type="json">
+				<param name="root">jsonResult</param>
+			</result>
 		</action>
 		<action name="updateFieldValue" class="updateFieldValueAction" method="update">
 			<result type="json">
