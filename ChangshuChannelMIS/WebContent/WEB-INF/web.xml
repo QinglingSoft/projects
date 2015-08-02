@@ -31,14 +31,14 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <filter>
+  <!-- <filter>
     <filter-name>DefaultMapLayerSetFilter</filter-name>
     <filter-class>com.qinglingsoft.changshuchannel.web.DefaultMapLayerSetFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>DefaultMapLayerSetFilter</filter-name>
     <url-pattern>/index.jsp</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>

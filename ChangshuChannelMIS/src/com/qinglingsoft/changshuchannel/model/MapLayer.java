@@ -1,19 +1,25 @@
 package com.qinglingsoft.changshuchannel.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class MapLayer {
 	@Id
 	private Integer id;
+	@Column(name="NameCHS")
 	private String name;
+	private String maplayerName;
+	private String tableName;
+	private String idName;
+	@Transient
 	private boolean defaultSelected;
 
 	public Integer getId() {
 		return id;
 	}
-
 	public String getName() {
 		return name;
 	}
@@ -22,6 +28,15 @@ public class MapLayer {
 		return defaultSelected;
 	}
 
+	public String getMaplayerName() {
+		return maplayerName;
+	}
+	public String getTableName() {
+		return tableName;
+	}
+	public String getIdName() {
+		return idName;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

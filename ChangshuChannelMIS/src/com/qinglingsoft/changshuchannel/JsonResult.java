@@ -16,6 +16,9 @@ public class JsonResult {
 	}
 
 	public static JsonResult fail(String errorMessage) {
+		if(errorMessage.indexOf(":")>-1){
+			errorMessage = errorMessage.substring(errorMessage.lastIndexOf(":")+1,errorMessage.length());
+		}
 		return new JsonResult(false, null, errorMessage);
 	}
 

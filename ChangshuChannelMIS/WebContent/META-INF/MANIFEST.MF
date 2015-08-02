@@ -1,3 +1,2 @@
-Manifest-Version: 1.0
-Class-Path: 
-
+Manifest-Version: 20150730
+Description: 1.地图查询按键，查询属性信息详见mapTest.jsp的调用方法 2.主界面时间中文显示 3.错误提示简洁化

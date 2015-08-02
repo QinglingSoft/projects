@@ -7,6 +7,18 @@
 <spring:useBean id="dataTableHelper" beanName="dataTableHelper" scope="request" />
 <jsp:setProperty name="dataTableHelper" property="dataTableName" />
 <c:set var="dataTable" value="${dataTableHelper.dataTable}" />
+
+<spring:useBean id="mapLayerHelper" beanName="mapLayerHelper" scope="request" />
+<c:set var="mapLayerList" value="${mapLayerHelper.all}"  scope="request" />
+<c:set var="tableNameIdsJson">
+	{
+	<c:forEach items="${mapLayerList}" var="mapLayer" varStatus="status">
+			<c:if test="${not status.first}">, </c:if>
+			"${mapLayer.tableName}": "${mapLayer.idName.trim()}"
+	</c:forEach>
+	}
+</c:set>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,6 +26,9 @@
 	<title>${dataTable.label}</title>
  	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript">
+		var catalog = "${param.catalog}";
+		var idNamesJson =${tableNameIdsJson};
+		
 		function briefSelected(parentPks) {
 			var params = {dataTableName: "${dataTable.name}"};
 			    params["catalog"] = "${dataTable.catalog}";
@@ -28,6 +43,21 @@
 		}
 		function resetDetail() {
 			$("#tableDetail").attr("src", "");
+		}
+		
+		//地图调用显示属性
+		function showDetail(tablename,id){
+			var params = {};
+			params.catalog = catalog;
+			params.dataTableName = tablename;
+			params["mapUse"] = "0";//表示是否是地图调用
+			var idNames = eval(idNamesJson);
+			for (var nameT in idNames) {
+				if(tablename==nameT){
+					params["primaryKeys." + idNames[nameT]]= id;
+				}
+			}
+			treeItemSelected(params);
 		}
 	</script>
 </head>

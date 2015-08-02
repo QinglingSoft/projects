@@ -13,16 +13,60 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>${dataTable.label}</title>
  	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
- 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
- 	<script type="text/javascript" src="js/mapFrame.js"></script>
- 	<script type="text/javascript" src="js/searchListFrame.js"></script>
+	<script type="text/javascript">
+		function briefSelected(primaryKeyValues) {
+			var params = {dataTableName: "${dataTable.name}"};
+			for (var pkName in primaryKeyValues) {
+				params["primaryKeys." + pkName] = primaryKeyValues[pkName];
+			}
+			$("#detail").attr("src", "tableDetail.jsp?" + $.param(params));
+		}
+		
+		function deleteSelected(primaryKeyValues) {
+			var params = {dataTableName: "${dataTable.name}"};
+			for (var pkName in primaryKeyValues) {
+				params["primaryKeys." + pkName] = primaryKeyValues[pkName];
+			}
+			
+			$.ajax({
+				url:"deleteData.action",
+				data: params,
+				type: "POST",
+				dataType: "json",
+				success: function(jsonResult, textStatus) {
+					if (!jsonResult.success) {
+						alert(jsonResult.errorMessage);
+						return;
+					}
+					window.setTimeout(function() {
+						window.frames["briefList"].location.reload();
+					}, 1000);
+				}
+			});
+			
+		}
+		
+		function newRootDataAdded(primaryKeyValues) {
+			var params = {dataTableName: "${dataTable.name}"};
+			for (var pkName in primaryKeyValues) {
+				params["primaryKeys." + pkName] = primaryKeyValues[pkName];
+			}
+			$("#detail").attr("src", "tableDetail.jsp?" + $.param(params));
+			
+			window.frames["briefList"].location.reload();
+		}
+		
+		function addRootData() {
+			$("#detail").attr("src", "newRootData.jsp?dataTableName=${dataTable.name}");
+		}
+	</script>
 </head>
-<frameset id="rootFrameset" cols="*, 0">
-	<c:url var="briefListUrl" value="qlBriefList.jsp">
-		<c:param name="dataTableName" value="T_QL"/>
+<frameset cols="75%, 25%">
+	<c:url var="briefListUrl" value="briefList.jsp">
+		<c:param name="dataTableName" value="${dataTable.name}"/>
 	</c:url>
-    <frame id="briefList" name="briefList" src="${briefListUrl}" />
-    <frame id="ql" name="ql" />
+    <frame name="briefList" src="${briefListUrl}" />
+    <frame id="detail" name="detail" src="" />
     <noframes>
     <body>
     <p>This page uses frames. The current browser you are using does not support frames.</p>

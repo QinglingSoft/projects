@@ -19,6 +19,9 @@
 </c:forEach>
 <c:set var="data" value="${tableDataHelper.data}" />
 
+<spring:useBean id="mapLayerHelper" beanName="mapLayerHelper" scope="request" />
+<c:set var="mapLayerList" value="${mapLayerHelper.all}"  scope="request" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -43,10 +46,26 @@
 		</c:forEach>
 		}
 	</c:set>
+	<!-- 判断是否地图调用，是则重新展示菜单 -->
+	<c:if test="${param.mapUse == '0'}">
+		<spring:useBean id="childTableDataHelper" beanName="childTableDataHelper" scope="page" />
+		<c:set target="${childTableDataHelper}" property="dataTableName" value="${dataTable.name}" />
+		<c:forEach items="${dataTable.primaryKeys}" var="pk">
+			<c:set target="${childTableDataHelper.params}" property="${pk.name}" value="${data[pk.name]}"/>
+		</c:forEach>
+		<c:set var="parentPrimaryKeyStr">
+			${childTableDataHelper.parentPrimaryKeyStr}
+		</c:set>
+	</c:if>
 	<script type="text/javascript">
 		var primaryKeys = ${primaryKeysJson};
 		var dataTableName = "${dataTable.name}";
 		var dataTableLabel = "${dataTable.label}";
+		//判断是否地图调用，是则重新展示菜单
+		if("${param.mapUse}"=="0"){
+			var parentPrimaryKeyStr = "${parentPrimaryKeyStr}";
+			window.parent.briefSelected(parentPrimaryKeyStr);
+		}
 		
 		function updateMediaFieldValue(){
 			var tableName;
@@ -240,7 +259,20 @@
 	</script>	
 </head>
 <body>
-	<div class="title ui-widget-header">${dataTable.label}</div>
+	<div class="title ui-widget-header">${dataTable.label}
+		<c:forEach items="${mapLayerList}" var="mapLayer">
+			<c:choose>
+				<c:when test="${dataTable.name==mapLayer.tableName}">
+					<c:set var="mapLayer_tbId">
+						<c:forEach items="${dataTable.primaryKeys}" var="key" varStatus="status">
+							<c:if test="${key.name==mapLayer.idName.trim()}">${data[key.name]}</c:if>
+						</c:forEach>
+					</c:set>
+					<button style="float:right" type="submit" onclick="javascript:window.parent.parent.showMap('${dataTable.name}',${mapLayer_tbId})">地图定位</button>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</div>
 	<c:choose>
 		<c:when test="${param.flag == '0'}">
 			<data:recordEven data="${data}" dataTable="${dataTable}" />

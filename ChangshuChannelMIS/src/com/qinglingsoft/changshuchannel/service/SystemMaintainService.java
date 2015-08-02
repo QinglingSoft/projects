@@ -37,7 +37,7 @@ public class SystemMaintainService {
 			this.maintaining = true;
 			File backupFile = buildBackupFile();
 			String sql = String.format(
-					"backup database roadBridge to Disk='%s'",
+					"backup database ChangshuChannel to Disk='%s'",
 					backupFile.getAbsolutePath());
 			jdbcTemplate.execute(sql);
 			return backupFile.getAbsolutePath();

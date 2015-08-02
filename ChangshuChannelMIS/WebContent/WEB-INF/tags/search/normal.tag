@@ -39,6 +39,6 @@
 		</li>
 	</c:forEach>
 	</ul>
-	<button>查询</button>
+	<button id="search">查询</button>
 </form>
 </div>
