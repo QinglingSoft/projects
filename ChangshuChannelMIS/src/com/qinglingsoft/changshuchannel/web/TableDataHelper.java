@@ -32,10 +32,16 @@ public class TableDataHelper {
 	}
 
 	public Map<String, Object> getData() {
+		Map<String, Object> map = null;
 		if (primaryKeys == null || primaryKeys.isEmpty()) {
 			return null;
 		}
-		return propertyJdbcService.findSingleMap(dataTableName, primaryKeys);
+		try{
+			 map = propertyJdbcService.findSingleMap(dataTableName, primaryKeys);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return map;
 	}
 	
 	/**

@@ -59,13 +59,19 @@
 		function addRootData() {
 			$("#detail").attr("src", "newRootData.jsp?dataTableName=${dataTable.name}");
 		}
+		
+		function showMap(tablename,id) {
+			var dingweiUrl = "mapTest.jsp?tablename=" + tablename + "&id=" + id;
+			$("#briefList").attr("src", dingweiUrl);
+			$("#searchListFrame").attr("cols", "*, 30%");
+		}
 	</script>
 </head>
-<frameset cols="75%, 25%">
+<frameset id="searchListFrame" cols="70%, 30%">
 	<c:url var="briefListUrl" value="briefList.jsp">
 		<c:param name="dataTableName" value="${dataTable.name}"/>
 	</c:url>
-    <frame name="briefList" src="${briefListUrl}" />
+    <frame id="briefList" name="briefList" src="${briefListUrl}" />
     <frame id="detail" name="detail" src="" />
     <noframes>
     <body>

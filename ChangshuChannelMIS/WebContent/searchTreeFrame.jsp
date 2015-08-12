@@ -46,11 +46,10 @@
 		}
 		
 		//地图调用显示属性
-		function showDetail(tablename,id){
+		function showAttribute(tablename,id){
 			var params = {};
 			params.catalog = catalog;
 			params.dataTableName = tablename;
-			params["mapUse"] = "0";//表示是否是地图调用
 			var idNames = eval(idNamesJson);
 			for (var nameT in idNames) {
 				if(tablename==nameT){
@@ -59,9 +58,16 @@
 			}
 			treeItemSelected(params);
 		}
+		
+		function showMap(tablename,id) {
+			var dingweiUrl = "mapTest.jsp?tablename=" + tablename + "&id=" + id;
+			$("#bridgeTreeList").attr("name", "map").attr("src", dingweiUrl);
+			$("#searchFrame").attr("cols", "*, 30%");
+		}
+
 	</script>
 </head>
-<frameset cols="35%, 65%">
+<frameset id="searchFrame" cols="35%, 65%">
 	<c:url var="briefListUrl" value="oneBriefList.jsp">
 		<c:param name="dataTableName" value="${dataTable.name}"/>
 		<c:param name="catalog" value="${param.catalog}"/>

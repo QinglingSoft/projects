@@ -61,10 +61,9 @@
 		var primaryKeys = ${primaryKeysJson};
 		var dataTableName = "${dataTable.name}";
 		var dataTableLabel = "${dataTable.label}";
-		//判断是否地图调用，是则重新展示菜单
-		if("${param.mapUse}"=="0"){
-			var parentPrimaryKeyStr = "${parentPrimaryKeyStr}";
-			window.parent.briefSelected(parentPrimaryKeyStr);
+		
+		if("${data}"==""){
+			alert("未查询到信息！");
 		}
 		
 		function updateMediaFieldValue(){
@@ -268,7 +267,7 @@
 							<c:if test="${key.name==mapLayer.idName.trim()}">${data[key.name]}</c:if>
 						</c:forEach>
 					</c:set>
-					<button style="float:right" type="submit" onclick="javascript:window.parent.parent.showMap('${dataTable.name}',${mapLayer_tbId})">地图定位</button>
+					<button style="float:right" type="submit" onclick="javascript:window.parent.showMap('${dataTable.name}',${mapLayer_tbId})">地图定位</button>
 				</c:when>
 			</c:choose>
 		</c:forEach>

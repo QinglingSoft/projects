@@ -16,12 +16,22 @@
 	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
 	<script type="text/javascript">
-	function show() {
+	$(function(){
+		if("${param.tablename}"!=""){
+			showMap("${param.tablename}","${param.id}");
+		}
+	});
+	//调用地图定义方法
+	function showMap(tablename,id){
+		alert(tablename+"----------"+id);
+	}
+	//调用属性
+	function showAttribute() {
 		if($("#tableName").val()==""||$("#tableId").val()==""){
 			alert("不能为空");
 			return false;
 		}
-		window.parent.parent.showAttribute($("#tableName").val(),$("#tableId").val());  
+		window.parent.showAttribute($("#tableName").val(),$("#tableId").val());  
     }
 	</script>
 </head>
@@ -29,6 +39,6 @@
 	<center>
 	TableName:<input type="text" id="tableName"/>
 	ID:<input type="text" id="tableId"/>
-	<button type="submit" onclick="show()" >查看属性</button></center>
+	<button type="submit" onclick="showAttribute()" >查看属性</button></center>
 </body>
 </html>

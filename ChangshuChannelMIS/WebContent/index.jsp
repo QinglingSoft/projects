@@ -104,30 +104,6 @@
 		           
 			});
 			
-			//tab
-			$(".tabs").hide();   
-			$(".tab_content").hide();   
-		    $("ul.tabs li:first").addClass("active").show();  
-		    $(".tab_content:first").show();
-		    $("ul li.showTab").click(function() {
-		    	$("ul.tabs li").removeClass("active"); 
-		    	$("ul.tabs li:first").addClass("active").show();
-		    	$(".tabs").show();
-		    	$(".tab_content:first").show();
-		    });
-		    $("ul li.hideTab").click(function() {
-		    	$(".tabs").hide();
-		    	$(".tab_content:first").show();
-		    });
-		    
-		    $("ul.tabs li").click(function() {  
-		        $("ul.tabs li").removeClass("active"); 
-		        $(this).addClass("active");  
-		        $(".tab_content").hide(); 
-		        var activeTab = $(this).find("a").attr("href");  
-		        $(activeTab).fadeIn();
-		        return false;  
-		    }); 
 		});
 		
 		//显示服务器时间
@@ -163,34 +139,6 @@
 
 		function displayMap() {
 			$("iframe[name=workspace]").attr("src", "testFrame.jsp");
-			//为首页地图调用属性所写
-			$("iframe[name=mapAttribute]").attr("src", $("#showMap").attr("href"));
-		}
-		//供地图调用查看属性
-		function showAttribute(tablename,id){
-			$("ul.tabs li").removeClass("active"); 
-	        $("ul.tabs li").first().addClass("active");  
-	        $(".tab_content").hide(); 
-	        if(workspace.window.showDetail==undefined){
-	        	var activeTab = $("ul.tabs li").last().find("a").attr("href");  
-		        $(activeTab).fadeIn();
-	        	mapAttribute.window.showDetail(tablename,id);
-	        }else{
-	        	var activeTab = $("ul.tabs li").first().find("a").attr("href");  
-		        $(activeTab).fadeIn();
-	        	workspace.window.showDetail(tablename,id);
-	        }
-			
-		}
-		//调用地图
-		function showMap(tablename,id){
-			$("ul.tabs li").removeClass("active"); 
-	        $("ul.tabs li").eq(1).addClass("active");  
-	        $(".tab_content").hide(); 
-	        var activeTab = $("ul.tabs li").eq(1).find("a").attr("href");  
-	        $(activeTab).fadeIn();
-	        //TODO
-	        map.window.showMap(tablename,id);
 		}
 	</script>
 	<script type="text/javascript" src="js/roadBridge-lxTree.js"></script>
@@ -202,11 +150,11 @@
 		<div id="clock"></div>
 		<div id="topLevelFunctions">
 			<ul>
-				<li class="hideTab"><a href="testFrame.jsp">地图浏览</a></li>
-				<li class="hideTab"><a href="articleFrame.jsp">新闻通知</a></li>
-				<li class="hideTab"><a href="changePassword.jsp">修改密码</a></li>
-				<li class="hideTab"><a href="logout.action" target="_top">退出登录</a></li>
-				<li class="hideTab"><a id="copyrightLink" href="javascript:void(0)">关于
+				<li><a href="testFrame.jsp">地图浏览</a></li>
+				<li><a href="articleFrame.jsp">新闻通知</a></li>
+				<li><a href="changePassword.jsp">修改密码</a></li>
+				<li><a href="logout.action" target="_top">退出登录</a></li>
+				<li><a id="copyrightLink" href="javascript:void(0)">关于
 					<span id="copyright">
 						常熟市航道管理信息系统 v1.0<br/>
 						版权所有 &copy; 2014
@@ -221,7 +169,7 @@
 		    <h3><a href="#">地图</a></h3>
 		    <div>
 		    	<ul>
-		    		<li class="link hideTab"><a href="testFrame.jsp">地图浏览</a></li>
+		    		<li class="link"><a href="testFrame.jsp">地图浏览</a></li>
 				</ul>
 			</div>
 
@@ -232,13 +180,13 @@
 						<c:param name="dataTableName" value="T_HD" />
 						<c:param name="catalog" value="航道基础信息管理" />
 					</c:url>
-					<li class="link showTab"><a id="showMap" href="${url}">航道基础信息一览</a></li>
+					<li class="link"><a id="showMap" href="${url}">航道基础信息一览</a></li>
 				</ul>
 		    </div>
 		   <h3><a href="#">查询</a></h3>
 		    <div>
 		    	<ul>
-		    		<li class="hideTab"><select class="field" name="dataTableName" id="dataTableName">
+		    		<li><select class="field" name="dataTableName" id="dataTableName">
 						<option value="">---请选择内容---</option>
 						<c:forEach items="${dataTableList}" var="dataTable">
 							<c:if test="${dataTable.name != 'T_REPORT' && dataTable.name != 'T_MEDIA'}">
@@ -253,50 +201,50 @@
 			<h3><a href="#">航道工程管理</a></h3>
 		    <div>
 				<ul>
-   					<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_GC_HDGHML">航道工程规划目录</a></li>
+   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GC_HDGHML">航道工程规划目录</a></li>
 					<c:url var="url" value="searchTreeFrame.jsp">
 						<c:param name="dataTableName" value="T_GC_HDGHML" />
 						<c:param name="catalog" value="航道工程管理" />
 					</c:url>
-					<li class="link hideTab"><a href="${url}">规划、计划及统计、执行一览</a></li>
-   					<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_GC_QZSCJH">维护措施目录</a></li>
-   					<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_GC_HDGCWCQK">航道工程完成情况维护</a></li>
-    				<li class="link hideTab"><a href="report/hdwchqk.jsp">航道工程完成情况</a></li>
+					<li class="link"><a href="${url}">规划、计划及统计、执行一览</a></li>
+   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GC_QZSCJH">维护措施目录</a></li>
+   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GC_HDGCWCQK">航道工程完成情况维护</a></li>
+    				<li class="link"><a href="report/hdwchqk.jsp">航道工程完成情况</a></li>
 				</ul>
 		    </div>
 		   
 		    <h3><a href="#">航道养护管理</a></h3>
 		    <div>
 				<ul>
-    				<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_YH_WHCSML">维护措施目录</a></li>
-    				<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_YH_ZZJZWML">建筑物维护目录</a></li>
+    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_YH_WHCSML">维护措施目录</a></li>
+    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_YH_ZZJZWML">建筑物维护目录</a></li>
 		    	</ul>
 			</div>
 		   
 		    <h3><a href="#">航政业务管理</a></h3>
 		    <div>
 				<ul>
-     				<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHJH">航政巡航计划维护</a></li>
-    				<li class="link hideTab"><a href="report/xhjh.jsp">巡航计划表</a></li>
-    				<li class="link hideTab"><a href="report/xhlcjs.jsp">航政巡航里程</a></li>
-    				<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHFY">航政巡航费用维护</a></li>
-    				<li class="link hideTab"><a href="report/xhfyjs.jsp">航政巡航费用</a></li>
-    				<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_THBZQK">航道通航保证情况</a></li>
-    				<li class="link hideTab"><a href="report/thbz.jsp">航道通航保证情况报表</a></li>
-    				<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XKDJ">航道证许可事项登记</a></li>
-    				<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_REPORT">航道管理与养护年报</a></li>
+     				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHJH">航政巡航计划维护</a></li>
+    				<li class="link"><a href="report/xhjh.jsp">巡航计划表</a></li>
+    				<li class="link"><a href="report/xhlcjs.jsp">航政巡航里程</a></li>
+    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XHFY">航政巡航费用维护</a></li>
+    				<li class="link"><a href="report/xhfyjs.jsp">航政巡航费用</a></li>
+    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_THBZQK">航道通航保证情况</a></li>
+    				<li class="link"><a href="report/thbz.jsp">航道通航保证情况报表</a></li>
+    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XKDJ">航道证许可事项登记</a></li>
+    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_REPORT">航道管理与养护年报</a></li>
 		    	</ul>
 			</div>
 			
 			<h3><a href="#">航道管理部门</a></h3>
 		    <div>
 				<ul>
-   					<li class="link hideTab"><a href="oneLevelFrame.jsp?dataTableName=T_GL_HDGLJG">航道管理机构列表</a></li>
+   					<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_GL_HDGLJG">航道管理机构列表</a></li>
 					<c:url var="url" value="searchTreeFrame.jsp">
 						<c:param name="dataTableName" value="T_GL_HDGLJG" />
 						<c:param name="catalog" value="航道管理部门" />
 					</c:url>
-   					<li class="link hideTab"><a href="${url}">航道管理机构一览</a></li>
+   					<li class="link"><a href="${url}">航道管理机构一览</a></li>
 				</ul>
 		    </div>
 			
@@ -304,28 +252,13 @@
 			<h3><a href="#">系统管理</a></h3>
 			<div>
 				<ul>
-					<li class="link hideTab"><a href="admin/userList.jsp">用户管理</a></li>
-					<li class="link hideTab"><a href="admin/backup.action" onclick="return confirm('数据备份将使系统暂时不能为其他用户提供服务，确定要备份吗？')">数据备份</a></li>
+					<li class="link"><a href="admin/userList.jsp">用户管理</a></li>
+					<li class="link"><a href="admin/backup.action" onclick="return confirm('数据备份将使系统暂时不能为其他用户提供服务，确定要备份吗？')">数据备份</a></li>
 				</ul>
 			</div>
 			</c:if>
 		</div>
 	</div>
-	<div class="ui-layout-center open">  
-	    <ul class="tabs">  
-	        <li class="active"><a href="#tab1">属性信息</a></li>  
-	        <li><a href="#tab2">地图信息</a></li>  
-	        <li style="display: none; "><a href="#tab3">供首页地图调用使用</a></li>  
-	    </ul>  
-	    <div id="tab1" class="tab_content" style="display: block; "> 
-			<iframe frameborder="0" marginheight="0" marginwidth="0" height="97%" width="100%" name="workspace" src=""></iframe>
-		</div>  
-        <div id="tab2" class="tab_content" style="display: none; ">  
-            <iframe frameborder="0" marginheight="0" marginwidth="0" height="100%" width="100%" name="map" src="testFrame.jsp"></iframe> 
-        </div> 
-        <div id="tab3" class="tab_content" style="display: none; ">  
-            <iframe frameborder="0" marginheight="0" marginwidth="0" height="100%" width="100%" name="mapAttribute" src=""></iframe> 
-        </div> 
-	</div>  
+	<iframe class="ui-layout-center" name="workspace" src=""></iframe>  
 </body>
 </html>
