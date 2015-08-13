@@ -13,7 +13,7 @@ import com.qinglingsoft.webframework.transfer.ResultFragment;
  */
 public abstract class PageHelper<T> {
 
-	private static int DEFAULT_PAGE_SIZE = 10;
+	private static int DEFAULT_PAGE_SIZE = 15;
 	private static final int CURRENT_PAGE_START = 0;// currentPage属性起始值
 	protected int pageSize = DEFAULT_PAGE_SIZE;
 	private long totalPages = 1;// 从1开始
