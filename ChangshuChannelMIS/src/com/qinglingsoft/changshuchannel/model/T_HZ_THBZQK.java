@@ -25,8 +25,7 @@ public class T_HZ_THBZQK {
 	private String dhyy;//断航原因
 	private String thbzl;//通航保证率
 	private String tbr;//填报人
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date tbrq;//填报日期
+	private String tbrq;//填报日期
 	private String bz;//备注
 
 	
@@ -95,11 +94,11 @@ public class T_HZ_THBZQK {
 		this.tbr = tbr;
 	}
 
-	public Date getTbrq() {
+	public String getTbrq() {
 		return tbrq;
 	}
 
-	public void setTbrq(Date tbrq) {
+	public void setTbrq(String tbrq) {
 		this.tbrq = tbrq;
 	}
 

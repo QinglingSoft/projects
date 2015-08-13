@@ -289,7 +289,12 @@ public class ReportHelper {
 					t_HZ_THBZQK.setHdmcStr(c.getMeaning());
 				}
 			}
-			otherDate = t_HZ_THBZQK.getTbrq();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				otherDate = sdf.parse(t_HZ_THBZQK.getTbrq());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			personName = t_HZ_THBZQK.getTbr();
 			unitName = t_HZ_THBZQK.getTbdw();
 		}

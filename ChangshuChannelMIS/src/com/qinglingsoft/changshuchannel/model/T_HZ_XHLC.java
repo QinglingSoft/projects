@@ -15,8 +15,7 @@ public class T_HZ_XHLC {
 	@Id
 	@GeneratedValue
 	private Long xhlcId;//巡航里程ID
-	@Temporal(TemporalType.DATE)
-	private Date xhsj;//巡航时间
+	private String xhsj;//巡航时间
 	private String sgcz;//巡航车船
 	private int xhcs;//巡航次数
 	private int sflfxh;//是否来回巡航
@@ -41,11 +40,11 @@ public class T_HZ_XHLC {
 		this.xhlcId = xhlcId;
 	}
 
-	public Date getXhsj() {
+	public String getXhsj() {
 		return xhsj;
 	}
 
-	public void setXhsj(Date xhsj) {
+	public void setXhsj(String xhsj) {
 		this.xhsj = xhsj;
 	}
 

@@ -56,8 +56,8 @@ public class ReportService {
 	public List<T_HZ_XHJH> getCruisePlanReports(Date reportDate) {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(
 				T_HZ_XHJH.class);
-		crit.add(Restrictions.ge("xhrq", getFirstday(reportDate)));
-		crit.add(Restrictions.le("xhrq", getLastday(reportDate)));
+		crit.add(Restrictions.ge("xhrq", getDateToString(getFirstday(reportDate))));
+		crit.add(Restrictions.le("xhrq", getDateToString(getLastday(reportDate))));
 		crit.addOrder(Order.asc("xhsj"));
 		return crit.list();
 	}

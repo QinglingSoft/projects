@@ -14,8 +14,7 @@ public class T_HZ_XHJH {
 	@Id
 	@GeneratedValue
 	private Long xhjhId;//巡航计划ID
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date xhrq;//巡航计划年月
+	private String xhrq;//巡航计划年月
 	private String sgcz;//巡航车船
 	private Integer xhsj;//巡航日期
 	private String hdmc;//航道名称
@@ -31,11 +30,11 @@ public class T_HZ_XHJH {
 		this.xhjhId = xhjhId;
 	}
 
-	public Date getXhrq() {
+	public String getXhrq() {
 		return xhrq;
 	}
 
-	public void setXhrq(Date xhrq) {
+	public void setXhrq(String xhrq) {
 		this.xhrq = xhrq;
 	}
 
