@@ -23,7 +23,7 @@
 	});
 	//调用地图定义方法
 	function showMap(tablename,id){
-		alert(tablename+"----------"+id);
+		//alert(tablename+"----------"+id);
 	}
 	//调用属性
 	function showAttribute() {
@@ -36,9 +36,9 @@
 	</script>
 </head>
 <body>
-	<center>
+	<!-- <center>
 	TableName:<input type="text" id="tableName"/>
 	ID:<input type="text" id="tableId"/>
-	<button type="submit" onclick="showAttribute()" >查看属性</button></center>
+	<button type="submit" onclick="showAttribute()" >查看属性</button></center> -->
 </body>
 </html>
