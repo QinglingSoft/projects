@@ -28,6 +28,9 @@
 		$(function(){
 			var deleteFlag = false;
 			$("table.briefList > tbody > tr > td.delete").click(function(){
+				if (!confirm("确定删除？")) {
+					return;
+				}
 				var pkJson = $(this).parent().attr("primaryKeyValues");
 				var primaryKeyValues = eval(pkJson);
 				window.parent.deleteSelected(primaryKeyValues);
@@ -46,6 +49,10 @@
 			$("#addRootDataButton").click(function(){
 				window.parent.addRootData();
 			});
+			
+			$("#exportRootDataButton").click(function(){
+				window.location="exportDatas.action?dataTableName=${dataTable.name}&label=${dataTable.label}"
+			});
 		});
 	</script>
 </head>
@@ -57,7 +64,7 @@
 <list:pageTurner styleClass="pageTurner ui-widget-header" pageHelper="${briefPage}" linkParams="${linkParams}" />
 
 <table class="briefList">
-	<caption style="text-align: right"><button id="addRootDataButton">新增</button></caption>
+	<caption style="text-align: right;margin:1px 1px"><button id="addRootDataButton">新增</button>&nbsp;<button id="exportRootDataButton">导出</button></caption>
 	<thead class="ui-widget-header">
 		<tr>
 			<c:forEach items="${dataTable.briefFields}" var="field">

@@ -117,5 +117,17 @@
 				<param name="error">505</param>
 			</result>
 		</action>
+		<action name="exportDatas" class="statisticExportAction"
+			method="exportDatas">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}.xls"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="error" type="httpheader">
+				<param name="error">505</param>
+			</result>
+		</action>
 	</package>
 </struts>

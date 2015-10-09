@@ -21,6 +21,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import com.qinglingsoft.changshuchannel.IllegalFieldTypeException;
@@ -35,6 +36,7 @@ import com.qinglingsoft.changshuchannel.model.DataField;
 import com.qinglingsoft.changshuchannel.model.DataTable;
 import com.qinglingsoft.changshuchannel.model.FieldCondition;
 import com.qinglingsoft.changshuchannel.model.FileTypeValue;
+import com.qinglingsoft.changshuchannel.model.StatisticResult;
 import com.qinglingsoft.webframework.transfer.ResultFragment;
 
 @Repository
@@ -368,6 +370,21 @@ public class PropertyJdbcService {
 		ResultFragment<Map<String, Object>> rf = new ResultFragment<Map<String, Object>>(
 				totalCount, fragment);
 		return rf;
+	}
+	
+	
+	public StatisticResult findByConditions(String tableName, Collection<Condition> conditions) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String whereClause = buildWhereClause(conditions, params);
+		String briefFieldsClause = buildBriefAndPkFieldsClause(tableName);
+//		String sql = "select " + briefFieldsClause + " from " + tableName
+//				+ whereClause;
+		String sql = "select * from " + tableName + whereClause;
+		logger.finer(sql);
+		SqlRowSet rowset = jdbcTemplate.queryForRowSet(sql, params);
+		String[] columnNames = rowset.getMetaData().getColumnNames();
+		List<Map<String, Object>> data = jdbcTemplate.queryForList(sql, params);
+		return new StatisticResult(columnNames, data);
 	}
 
 	private String buildWhereClause(Collection<Condition> conditions,
