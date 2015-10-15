@@ -46,13 +46,11 @@
 			<th>所属：</th>
 			<td>
 				<spring:useBean id="codeTableHelper" beanName="codeTableHelper" />
-				<c:set target="${codeTableHelper}" property="codeTableName" value="C_XZQH" />
+				<c:set target="${codeTableHelper}" property="codeTableName" value="TC_XZQH" />
 				<select name="user.deptCode" class="required">
 					<option value="">--- 请选择 ---</option>
 					<c:forEach items="${codeTableHelper.codeTable.codes}" var="codeEntry">
-						<c:if test="${fn:endsWith(codeEntry.key, '000000')}">
-							<option value="${codeEntry.key}">${codeEntry.value.meaning}</option>
-						</c:if>
+						<option value="${codeEntry.key}">${codeEntry.value.meaning}</option>
 					</c:forEach>
 				</select>
 			</td>

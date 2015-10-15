@@ -6,7 +6,7 @@
 <%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/list" prefix="list" %>
 
 <spring:useBean id="codeTableHelper" beanName="codeTableHelper" />
-<c:set target="${codeTableHelper}" property="codeTableName" value="C_XZQH" />
+<c:set target="${codeTableHelper}" property="codeTableName" value="TC_XZQH" />
 <c:set var="xzqhCodeTable" value="${codeTableHelper.codeTable}" />
 
 <spring:useBean id="userPage" beanName="userPageHelper" scope="session" />

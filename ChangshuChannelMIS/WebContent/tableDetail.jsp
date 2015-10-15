@@ -197,6 +197,9 @@
 		}
 		
 		function deleteSelected(pkJson) {
+			if (!confirm("确定删除？")) {
+				return;
+			}
 			var primaryKeyValues = eval(pkJson);
 			var params = {dataTableName: "T_MEDIA"};
 			for (var pkName in primaryKeyValues) {
