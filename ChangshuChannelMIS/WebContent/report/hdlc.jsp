@@ -84,7 +84,6 @@ select  hddm as hddm1,SFAH from t_ghql as t  left join t_hdhd on t.hdhdid=t_hdhd
 					</c:choose>
 				</c:if>
 			</c:forEach>
-			<th rowspan="2">备注</th>
 		</tr>
 		<tr>
 			<c:forEach items="${result.columnNames}" var="columnName" varStatus="status">
