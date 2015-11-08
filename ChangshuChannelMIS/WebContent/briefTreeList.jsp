@@ -7,11 +7,12 @@
 <%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
 <%@ taglib tagdir="/WEB-INF/tags/data" prefix="data" %>
 <%@ taglib tagdir="/WEB-INF/tags/briefTree" prefix="briefTree" %>
+<%@ taglib tagdir="/WEB-INF/tags/auth" prefix="auth" %>
 
 <spring:useBean id="dataTableHelper" beanName="dataTableHelper" scope="request" />
 <jsp:setProperty name="dataTableHelper" property="dataTableName" />
 <c:set var="dataTable" value="${dataTableHelper.dataTable}" />
-
+<auth:loadAuthorizationHelper dataTable="${dataTable}" data="${data}" />
 <spring:useBean id="briefPage" beanName="briefPageHelper" scope="request" />
 <jsp:setProperty name="briefPage" property="*" />
 
@@ -43,6 +44,7 @@
 <jsp:useBean id="linkParams" class="java.util.HashMap" scope="page"/>
 <c:set target="${linkParams}" property="dataTableName" value="${dataTable.name}"/>
 <c:set target="${linkParams}" property="catalog" value="${param.catalog}"/>
+<c:set value="${authorizationHelper.hasPermission}" var="permission" />
 <list:pageTurner styleClass="pageTurner ui-widget-header" pageHelper="${briefPage}" linkParams="${linkParams}" />
 <ul class="briefTree">
 	<c:forEach items="${briefList}" var="brief">
@@ -50,6 +52,6 @@
 	</c:forEach>
 </ul>
 <div id="addDialog"></div>
-<div id="rightClickMenu"></div>
+<div id="rightClickMenu" permission="${permission}"></div>
 </body>
 </html>

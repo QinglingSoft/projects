@@ -43,6 +43,10 @@ public class DataTable {
 	 */
 	private Integer orderWeight;
 	/**
+	 * 权限值 对应机构具有的权限
+	 */
+	private Integer permission;
+	/**
 	 * 与父表是否为多对一关系，在本项目中目前有父表的都是多对一，该字段暂时没有发挥作用
 	 */
 	private boolean multi;
@@ -149,6 +153,14 @@ public class DataTable {
 
 	public List<DataTable> getChildren() {
 		return children;
+	}
+
+	public Integer getPermission() {
+		return permission;
+	}
+
+	public void setPermission(Integer permission) {
+		this.permission = permission;
 	}
 
 	public Map<String, DataTable> getChildrenMap() {

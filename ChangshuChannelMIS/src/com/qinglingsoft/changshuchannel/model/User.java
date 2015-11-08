@@ -5,6 +5,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Users")
@@ -31,6 +32,8 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	private String deptCode;
+	@Transient
+	private int permission;
 
 	public User() {
 	}
@@ -73,6 +76,16 @@ public class User {
 	public void setDeptCode(String deptCode) {
 		this.deptCode = deptCode;
 	}
+
+	
+	public int getPermission() {
+		return permission;
+	}
+
+	public void setPermission(int permission) {
+		this.permission = permission;
+	}
+
 
 	/**
 	 * 部门代码无效部分长度数组，省级10位，市级8位，县级6位，乡级3位

@@ -3,7 +3,9 @@
 <%@ attribute name="data" description="记录数据" required="true" type="java.util.Map" %>
 <%@ attribute name="field" description="字段" required="true" type="com.qinglingsoft.changshuchannel.model.DataField" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags/auth" prefix="auth" %>
 
+<auth:loadAuthorizationHelper dataTable="${dataTable}" data="${data}" />
 <%-- 生成预览地址，用时间令牌避免缓存 --%>
 <jsp:useBean id="token" class="java.util.Date" scope="page" />
 <c:url var="previewUrl" value="previewFileTypeData.action">
@@ -36,4 +38,6 @@
 	<img keyValue ="${primaryKeyValues}" name="${dataTable.name}" src="${previewUrl}" width="200px" height="150px" />
 </a>
 <a href="${downloadUrl}" target="_blank"><img title="下载" src="images/download.png"></a>
+<c:if test="${authorizationHelper.hasPermission}">
 <a href="#" onclick="deleteSelected(${primaryKeyValues})"><img title="删除" src="images/delete.png"></a>
+</c:if>

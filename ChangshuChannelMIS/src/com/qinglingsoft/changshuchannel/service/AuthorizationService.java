@@ -40,9 +40,21 @@ public class AuthorizationService {
 		if (user.getDeptCode() == null) {
 			return false;
 		}
-		String rootRecordXzqhCode = getRootRecordXzqhCodeOf(recordIndex);
-		return rootRecordXzqhCode != null
-				&& rootRecordXzqhCode.startsWith(user.getDeptCodeActivePart());
+		if("T_MEDIA".equals(recordIndex.getDataTableName())){
+			 String tableName = getRootRecordXzqhCodeOf(recordIndex);
+			 recordIndex = new RecordIndex(tableName, null);
+		}
+		DataTable rootTable = dataTableService.findByName(recordIndex.getDataTableName());
+		int permission = rootTable.getPermission();
+		if(Long.bitCount(user.getPermission() & (1L << permission)) == 1){
+			return true;
+		}else{
+			return false;
+		}
+		
+//		String rootRecordXzqhCode = getRootRecordXzqhCodeOf(recordIndex);
+//		return rootRecordXzqhCode != null
+//				&& rootRecordXzqhCode.startsWith(user.getDeptCodeActivePart());
 	}
 
 	private String getRootRecordXzqhCodeOf(RecordIndex recordIndex) {
@@ -51,8 +63,9 @@ public class AuthorizationService {
 				.getDataTableName());
 
 		String whereClause = buildPkWhereClause(rootTable);
-		String sql = String.format("select xzqh from %s %s",
+		String sql = String.format("select objecttablename from %s %s",
 				rootTable.getName(), whereClause);
+		System.out.println(sql);
 		try {
 			String xzqh = jdbcTemplate.queryForObject(sql,
 					rootRecordIndex.getPrimaryKeyValues(), String.class);

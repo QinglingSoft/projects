@@ -1,6 +1,8 @@
 package com.qinglingsoft.changshuchannel.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -17,6 +19,15 @@ public class DataTableHelper {
 	private DataTableService dataTableService;
 	private String dataTableName;
 	private String catalog;
+	private Map<String, Object> primaryKeys = new HashMap<String, Object>();
+	
+	public Map<String, Object> getPrimaryKeys() {
+		return primaryKeys;
+	}
+
+	public void setPrimaryKeys(Map<String, Object> primaryKeys) {
+		this.primaryKeys = primaryKeys;
+	}
 
 	public void setDataTableName(String dataTableName) {
 		this.dataTableName = dataTableName;

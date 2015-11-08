@@ -51,13 +51,12 @@
 		<tr>
 			<th>所属：</th>
 			<td>
-				<spring:useBean id="codeTableHelper" beanName="codeTableHelper" />
-				<c:set target="${codeTableHelper}" property="codeTableName" value="TC_XZQH" />
+				<spring:useBean id="departmentHelper" beanName="departmentHelper" />
 				<select name="user.deptCode" class="required">
 					<option value="">--- 请选择 ---</option>
-					<c:forEach items="${codeTableHelper.codeTable.codes}" var="codeEntry">
-						<c:set var="selected"><c:if test="${user.deptCode == codeEntry.key}">selected="selected"</c:if></c:set>
-						<option value="${codeEntry.key}" ${selected}>${codeEntry.value.meaning}</option>
+					<c:forEach items="${departmentHelper.all}" var="department">
+						<c:set var="selected"><c:if test="${user.deptCode == department.gljg_ksid}">selected="selected"</c:if></c:set>
+						<option value="${department.gljg_ksid}" ${selected}>${department.gljg_qhdm}</option>
 					</c:forEach>
 				</select>
 			</td>

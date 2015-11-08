@@ -5,9 +5,7 @@
 <%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
 <%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/list" prefix="list" %>
 
-<spring:useBean id="codeTableHelper" beanName="codeTableHelper" />
-<c:set target="${codeTableHelper}" property="codeTableName" value="TC_XZQH" />
-<c:set var="xzqhCodeTable" value="${codeTableHelper.codeTable}" />
+<spring:useBean id="departmentHelper" beanName="departmentHelper" />
 
 <spring:useBean id="userPage" beanName="userPageHelper" scope="session" />
 <jsp:setProperty property="*" name="userPageHelper" />
@@ -36,7 +34,13 @@
 		<td>${entry.loginName}</td>
 		<td>${entry.name}</td>
 		<td>${entry.role.text}</td>
-		<td>${xzqhCodeTable.codes[entry.deptCode].meaning}</td>
+		<td>
+		<c:if test="${not entry.superAdmin and not entry.guest}">
+			<c:forEach items="${departmentHelper.all}" var="department">
+				<c:if test="${entry.deptCode == department.gljg_ksid}">${department.gljg_qhdm}</c:if>
+			</c:forEach>
+		</c:if>
+		</td>
 		<td>
 			<c:if test="${not entry.superAdmin and not entry.guest}">
 				<c:url var="editUrl" value="editUser.jsp">

@@ -1,19 +1,21 @@
 $(function(){
 	$("ul.briefTree .brief").live('contextmenu', function(event) {
-		var $selfTreeLi = $(this).parent("li");
-		$("ul.briefTree li").removeClass("rightClicked");
-		$selfTreeLi.addClass("rightClicked");
-		var params = buildAjaxParams($selfTreeLi);
-		$("#rightClickMenu")
-			.offset({
-				top: event.pageY,
-			 	left: event.pageX
-			 })
-		 	.empty()
-		 	.load("ajax/treeRightClickMenu.jsp", params)
-		 	.show();
-	 	roadBridge.$rightClickedElement = $selfTreeLi;
-	 	event.preventDefault();
+		if($("#rightClickMenu").attr("permission")=="true"){
+			var $selfTreeLi = $(this).parent("li");
+			$("ul.briefTree li").removeClass("rightClicked");
+			$selfTreeLi.addClass("rightClicked");
+			var params = buildAjaxParams($selfTreeLi);
+			$("#rightClickMenu")
+				.offset({
+					top: event.pageY,
+				 	left: event.pageX
+				 })
+			 	.empty()
+			 	.load("ajax/treeRightClickMenu.jsp", params)
+			 	.show();
+		 	roadBridge.$rightClickedElement = $selfTreeLi;
+		 	event.preventDefault();
+		}
 	});
 	
 	$(document).click(function(){

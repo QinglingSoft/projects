@@ -47,10 +47,10 @@ public class AuthorizationHelper {
 			logger.fine("授权时没有提供目标表名，拒绝授权");
 			return false;
 		}
-		if (primaryKeyValues.isEmpty()) {
-			logger.fine("授权时没有提供目标记录主键，拒绝授权");
-			return false;
-		}
+//		if (primaryKeyValues.isEmpty()) {
+//			logger.fine("授权时没有提供目标记录主键，拒绝授权");
+//			return false;
+//		}
 		return authorizationService.hasPermission(user, dataTableName,
 				primaryKeyValues);
 	}

@@ -5,11 +5,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/list" prefix="list" %>
-
+<%@ taglib tagdir="/WEB-INF/tags/auth" prefix="auth" %>
 <spring:useBean id="dataTableHelper" beanName="dataTableHelper" />
 <jsp:setProperty name="dataTableHelper" property="dataTableName" />
 <c:set var="dataTable" value="${dataTableHelper.dataTable}" />
-
+<auth:loadAuthorizationHelper dataTable="${dataTable}" data="${dataTableHelper.primaryKeys}" />
 <spring:useBean id="briefPage" beanName="briefPageHelper" />
 <jsp:setProperty name="briefPage" property="*" />
 <c:set target="${briefPage}" property="conditions" value="${sessionScope.conditions}"/>
@@ -64,7 +64,7 @@
 <list:pageTurner styleClass="pageTurner ui-widget-header" pageHelper="${briefPage}" linkParams="${linkParams}" />
 
 <table class="briefList">
-	<caption style="text-align: right;margin:1px 1px"><button id="addRootDataButton">新增</button>&nbsp;<button id="exportRootDataButton">导出</button></caption>
+	<caption style="text-align: right;margin:1px 1px"><c:if test="${authorizationHelper.hasPermission}"> <button id="addRootDataButton">新增</button></c:if>&nbsp;<button id="exportRootDataButton">导出</button></caption>
 	<thead class="ui-widget-header">
 		<tr>
 			<c:forEach items="${dataTable.briefFields}" var="field">
@@ -118,7 +118,12 @@
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
-				<td class="delete">删除</td>
+				<c:choose>
+					<c:when test="${authorizationHelper.hasPermission}">
+						<td class="delete">删除</td>
+					</c:when>
+					<c:otherwise><td></td></c:otherwise>
+				</c:choose>
 			</tr>
 		</c:forEach>
 	</tbody>

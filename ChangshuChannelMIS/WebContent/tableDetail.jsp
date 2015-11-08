@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.qinglingsoft.com/java/webFramework/spring" prefix="spring" %>
 <%@ taglib tagdir="/WEB-INF/tags/data" prefix="data" %>
+<%@ taglib tagdir="/WEB-INF/tags/auth" prefix="auth" %>
 
 <spring:useBean id="dataTableHelper" beanName="dataTableHelper" scope="request" />
 <jsp:setProperty name="dataTableHelper" property="dataTableName" />
@@ -21,6 +22,7 @@
 
 <spring:useBean id="mapLayerHelper" beanName="mapLayerHelper" scope="request" />
 <c:set var="mapLayerList" value="${mapLayerHelper.all}"  scope="request" />
+<auth:loadAuthorizationHelper dataTable="${dataTable}" data="${data}" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -289,8 +291,10 @@
 		<c:forEach items="${dataTable.primaryKeys}" var="pk">
 			<input type="hidden" name="primaryKeys.${pk.name}" value="${data[pk.name]}" />
 		</c:forEach>
-		<input name="upload" type="file" />
-		<button type="submit">√</button>
+		<c:if test="${authorizationHelper.hasPermission}">
+			<input name="upload" type="file" />
+			<button type="submit">√</button>
+		</c:if>
     </form>
     <div class="preview" style="margin:5px 0px 0px 5px;padding-bottom:10px">
 	</div>

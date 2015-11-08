@@ -8,11 +8,12 @@
 <%@ taglib tagdir="/WEB-INF/tags/data" prefix="data" %>
 <%@ taglib tagdir="/WEB-INF/tags/briefTree" prefix="briefTree" %>
 <%@ taglib tagdir="/WEB-INF/tags/search" prefix="search" %>
+<%@ taglib tagdir="/WEB-INF/tags/auth" prefix="auth" %>
 
 <spring:useBean id="dataTableHelper" beanName="dataTableHelper" />
 <jsp:setProperty name="dataTableHelper" property="dataTableName" />
 <c:set var="dataTable" value="${dataTableHelper.dataTable}" />
-
+<auth:loadAuthorizationHelper dataTable="${dataTable}" data="${data}" />
 <spring:useBean id="briefPage" beanName="briefPageHelper" />
 <jsp:setProperty name="briefPage" property="*" />
 <c:set target="${briefPage}" property="conditions" value="${conditionList}"/>
@@ -54,7 +55,7 @@
 </head>
 <body>
 <c:set var="briefList" value="${briefPage.list}"/>
-
+<c:set value="${authorizationHelper.hasPermission}" var="permission" />
 <jsp:useBean id="linkParams" class="java.util.HashMap" scope="page"/>
 <c:set target="${linkParams}" property="dataTableName" value="${dataTable.name}"/>
 <c:set target="${linkParams}" property="catalog" value="${param.catalog}"/>
@@ -136,7 +137,7 @@
 	</c:forEach>
 </ul>
 <div id="addDialog"></div>
-<div id="rightClickMenu"></div>
+<div id="rightClickMenu" permission="${permission}"></div>
 </c:if>
 </body>
 </html>

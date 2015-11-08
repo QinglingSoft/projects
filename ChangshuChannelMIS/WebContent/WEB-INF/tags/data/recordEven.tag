@@ -11,6 +11,7 @@
 <div class="statusIcon"></div>
 <table class="tableData">
 	<c:set value="1" var="sum" />
+	<c:set value="${authorizationHelper.hasPermission}" var="permission" />
 	<c:forEach items="${dataTable.fields}" var="field" varStatus="status">
 		<%-- 渲染可见字段 --%>
 		<c:if test="${field.visible}">
@@ -21,7 +22,7 @@
 				<th title="${field.label}">${field.label}<c:if test="${not empty field.unit}">(${field.unit})</c:if></th>
 				<td>
 					<c:choose>
-						<c:when test="${field.editable and authorizationHelper.hasPermission}">
+						<c:when test="${field.editable and permission}">
 							<%-- 有访问权限且字段可编辑的渲染方式，按字段类型区分对待 --%>
 							<c:choose>
 								<c:when test="${field.type == 'FILE'}">

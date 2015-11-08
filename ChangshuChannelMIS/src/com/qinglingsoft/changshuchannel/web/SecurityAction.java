@@ -10,7 +10,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.Action;
+import com.qinglingsoft.changshuchannel.model.T_GL_HDZZJG;
 import com.qinglingsoft.changshuchannel.model.User;
+import com.qinglingsoft.changshuchannel.service.DepartmentService;
 import com.qinglingsoft.changshuchannel.service.SecurityService;
 import com.qinglingsoft.changshuchannel.service.UserService;
 
@@ -33,6 +35,8 @@ public class SecurityAction implements SessionAware {
 	private String errorMessage;
 	@Resource
 	private UserService userService;
+	@Resource
+	private DepartmentService departmentService;
 
 	public String getLoginName() {
 		return loginName;
@@ -64,6 +68,20 @@ public class SecurityAction implements SessionAware {
 			return Action.ERROR;
 		}
 		User user = userService.findByLoginName(loginName);
+		int permission = 0;
+		if(user.getDeptCode()!=null){
+			T_GL_HDZZJG jg = departmentService.get(Long.valueOf(user.getDeptCode()));
+			if(jg!=null){
+				if("1".equals(jg.getSfxg_hdjcxx())) permission|= 1L << 1;
+				if("1".equals(jg.getSfbj_hdgcgh())) permission|= 1L << 2;
+				if("1".equals(jg.getSfbj_hdyhgh())) permission|= 1L << 3;
+				if("1".equals(jg.getSfbj_xhjh())) permission|= 1L << 4;
+			}
+		}
+		if(user.isSuperAdmin()){
+			permission =99;
+		}
+		user.setPermission(permission);
 		sessionScope.put(SessionAttributeNames.LOGIN_USER, user);
 		return Action.SUCCESS;
 	}
@@ -89,4 +107,7 @@ public class SecurityAction implements SessionAware {
 		return Action.SUCCESS;
 	}
 
+	public static void main(String[] args) {
+		System.out.println((1L<<2)+(0<<0));
+	}
 }

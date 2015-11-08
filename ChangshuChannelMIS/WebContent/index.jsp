@@ -96,7 +96,7 @@
 			
 			//菜单图标
 		    $("#menu ul > li.link").each(function(i){
-		    	if(i>25){
+		    	if(i>=25){
 		    		$(this).css("background-image","url(images/menu/"+(i%25)+".png)");
 		    	}else{
 		    		$(this).css("background-image","url(images/menu/"+(i+1)+".png)");
@@ -140,6 +140,7 @@
 		function displayMap() {
 			$("iframe[name=workspace]").attr("src", "testFrame.jsp");
 		}
+		
 	</script>
 	<script type="text/javascript" src="js/roadBridge-lxTree.js"></script>
 </head>
@@ -170,6 +171,13 @@
 		    <div>
 		    	<ul>
 		    		<li class="link"><a href="testFrame.jsp">地图浏览</a></li>
+		    		<div>
+				    	<ul>
+				    		<li class="link"><a href="javascript:AddHDMap()">导入航道轨迹</a></li>
+				    		<li class="link"><a href="testFrame.jsp">地图查询</a></li>
+				    		<li class="link"><a href="javascript:ClearMapSelect()">清除选择</a></li>
+						</ul>
+					</div>
 				</ul>
 			</div>
 
@@ -233,6 +241,20 @@
     				<li class="link"><a href="report/thbz.jsp">航道通航保证情况报表</a></li>
     				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_HZ_XKDJ">航道证许可事项登记</a></li>
     				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_REPORT">航道管理与养护年报</a></li>
+		    	</ul>
+			</div>
+			
+			<h3><a href="#">航道统计管理</a></h3>
+		    <div>
+				<ul>
+     				<li class="link"><a href="javascript:void(0)">航道统计汇总</a></li>
+    				<li class="link"><a href="report/hdwchqk.jsp">航道工程完成情况汇总</a></li>
+    				<li class="link"><a href="report/xhjh.jsp">航道巡航计划汇总</a></li>
+    				<li class="link"><a href="report/xhfyjs.jsp">航道巡航费用汇总</a></li>
+    				<li class="link"><a href="report/thbz.jsp">航道通航保证情况汇总</a></li>
+    				<li class="link"><a href="oneLevelFrame.jsp?dataTableName=T_REPORT">航道管理与养护年报</a></li>
+    				<li class="link"><a href="report/hdmx.jsp">航道明细</a></li>
+    				<li class="link"><a href="report/hdlc.jsp">航道里程</a></li>
 		    	</ul>
 			</div>
 			
