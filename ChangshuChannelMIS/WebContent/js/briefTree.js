@@ -64,5 +64,9 @@ $(function(){
 		window.parent.treeItemSelected(params);
 		$("ul.briefTree li").removeClass("selected");
 		$selfTreeLi.addClass("selected");
+		$selfTreeLi.toggleClass("expanded",true);
+		if ($selfTreeLi.hasClass("expanded")) {
+			loadSubTree($selfTreeLi);
+		}
 	});
 });
