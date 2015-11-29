@@ -7,8 +7,8 @@
 
 <spring:useBean id="departmentHelper" beanName="departmentHelper" />
 
-<spring:useBean id="userPage" beanName="userPageHelper" scope="session" />
-<jsp:setProperty property="*" name="userPageHelper" />
+<spring:useBean id="userPage" beanName="userPageHelper"/>
+<jsp:setProperty property="*" name="userPage" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
