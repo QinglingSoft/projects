@@ -1,2 +1,2 @@
-Manifest-Version: 20150803
-Description: 1.地图查询按键，查询属性信息详见mapTest.jsp的调用方法 2.增加查询菜单功能
+Manifest-Version: 20151130
+Description: 1.地图合并

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<!-- 初始放大级数-->
+	<zoomLevel>0</zoomLevel>
+	
+	<!-- 空间坐标系代码-->
+	<wkid>2437</wkid>
+	
+	<!-- 初始中心点-->
+	<centerX>120.425</centerX>
+	<centerY>28.429</centerY>
+	
+	<!-- 地图显示范围-->
+	<xMin>413660</xMin>
+	<xMax>536163</xMax>
+	<yMin>3435176</yMin>
+	<yMax>3560060</yMax>
+	<!-- <xMin>13174379.0784229</xMin>
+	<xMax>13279097.8071735</xMax>
+	<yMin>3731792.86305767</yMin>
+	<yMax>3799133.88497682</yMax> -->
+
+	<!-- 地图服务地址-->
+	<mapServer>http://58.216.140.181:8399/arcgis/rest/services/CZSjtlyMap/MapServer</mapServer>
+	<!-- <mapServer>http://cache1.arcgisonline.cn/ArcGIS/rest/services/ChinaCities_Community_BaseMap_CHN/NanJing_Community_BaseMap_CHN/MapServer</mapServer> -->
+	
+	<!-- 影像服务地址-->
+	<imgServer>http://58.216.140.181:8399/arcgis/rest/services/CZSjtlyYX/MapServer</imgServer>
+	
+	<!-- 空间查询航道图层-->
+	<queryHDserver>http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer</queryHDserver>
+	
+	<!-- 各种图标的配置-->
+	<queryUrls type="0" name="常熟航道">
+		<queryURL id="T_SSJYZ" icon="" state="JYZID" name="加油站" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/0"/>
+		<queryURL id="T_SSMT" icon="" state="MTID" name="码头" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/1"/>
+		<queryURL id="T_SSHA" icon="" state="HAID" name="护岸" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/2"/>
+		<queryURL id="T_SSGK" icon="" state="GKID" name="港口" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/3"/>
+		<queryURL id="T_HDDM" icon="" state="HDDMID" name="航段断面" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/4"/>
+		<queryURL id="T_LHSS" icon="" state="LHSSID" name="其它临河设施" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/5"/>
+		<queryURL id="T_MD" icon="" state="MDID" name="锚地" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/6"/>
+		<queryURL id="T_HDBP" icon="" state="HDBPID" name="航道标牌" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/7"/>
+		<queryURL id="T_SSGHW" icon="" state="ssGHjzWID" name="其它水上过河建筑物" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/8"/>
+		<queryURL id="T_HB" icon="" state="HBID" name="航标" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/9"/>
+		<queryURL id="T_SSCC" icon="" state="CCID" name="船厂" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/10"/>
+		<queryURL id="T_GHQLQK" icon="" state="qkid" name="桥孔" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/11"/>
+		<queryURL id="T_SNCZ" icon="" state="CZID" name="船闸" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/12"/>
+		<queryURL id="T_GHQL" icon="" state="GHQLID" name="桥梁" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/13"/>
+		<queryURL id="T_SN" icon="" state="" name="枢纽" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/14"/>
+		<queryURL id="T_DC" icon="" state="DCID" name="渡槽" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/15"/>
+		<queryURL id="T_SD" icon="" state="SDID" name="隧道" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/16"/>
+		<queryURL id="T_SXGHW" icon="" state="SXGHjzWID" name="其它水下过河建筑物" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/17"/>
+		<queryURL id="T_HDHD" icon="" state="HDHDID" name="航段" url="http://192.168.1.210:6080/arcgis/rest/services/ChangshuChannel/MapServer/18"/>
+	</queryUrls>
+	
+	<!-- java后台Remote服务-->
+	<remoteUrl>http://localhost:8000/gis/messagebroker/amf</remoteUrl>
+</configuration>
