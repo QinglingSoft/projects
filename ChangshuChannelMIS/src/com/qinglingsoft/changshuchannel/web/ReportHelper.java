@@ -211,8 +211,13 @@ public class ReportHelper {
 			yt.setSjwfxjlc((yt.getSjwfxjlc()==null?0:yt.getSjwfxjlc())+(t_HZ_XHLC.getSjwfxjlc()==null?0:t_HZ_XHLC.getSjwfxjlc()));
 			
 		}
-		mt.setJhxhlc(Double.valueOf(new BigDecimal((yt.getJhxhlc()==null?0:yt.getJhxhlc())/12).setScale(2, BigDecimal.ROUND_HALF_UP)+""));
-		mt.setSjwfxjlc(Double.valueOf(new BigDecimal((yt.getSjwfxjlc()==null?0:yt.getSjwfxjlc())/12).setScale(2, BigDecimal.ROUND_HALF_UP)+""));
+		if(yt.getJhxhlc()!=null){
+			mt.setJhxhlc(Double.valueOf(new BigDecimal(yt.getJhxhlc()/12).setScale(2, BigDecimal.ROUND_HALF_UP)+""));
+		}
+		if(yt.getSjwfxjlc()!=null){
+			mt.setSjwfxjlc(Double.valueOf(new BigDecimal(yt.getSjwfxjlc()/12).setScale(2, BigDecimal.ROUND_HALF_UP)+""));
+		}
+		
 		
 		list.add(mt);
 		list.add(yt);
